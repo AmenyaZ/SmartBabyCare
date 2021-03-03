@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.smartbabycare.AddingChild.AddingChildFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,6 +33,11 @@ public class SmartBaby extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.nav_host_fragment, AddingChildFragment.class, null);
+                transaction.commit();
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }

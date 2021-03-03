@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/childCard"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="8dp">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/childAvatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/childName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child Name : "
+        app:layout_constraintTop_toTopOf="@id/childAvatar"
+        app:layout_constraintStart_toEndOf="@id/childAvatar"
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/childAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child Age : "
+        app:layout_constraintTop_toBottomOf="@id/childName"
+        app:layout_constraintStart_toEndOf="@id/childAvatar"
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
