@@ -37,7 +37,7 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(this, VerifyActivity.class));
+                startActivity(new Intent(SmartBabyPhoneLogin.this, VerifyActivity.class));
                 finish();
             }
         });
