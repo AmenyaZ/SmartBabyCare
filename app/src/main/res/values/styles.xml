@@ -10,4 +10,16 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style  name="edit_text_login_style">
+        <item name="android:background">@drawable/edit_profile_rect</item>
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">@dimen/text_size_extra_normal</item>
+        <item name="android:fontFamily">@font/titillium_regular</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:paddingLeft">@dimen/activity_margin_normal_</item>
+        <item name="android:paddingRight">@dimen/activity_margin_normal_</item>
+        <item name="android:paddingTop">@dimen/activity_margin_normal_</item>
+        <item name="android:paddingBottom">@dimen/activity_margin_normal_</item>
+
+    </style>
 </resources>
