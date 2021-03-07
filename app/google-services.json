@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "629619084886",
+    "project_id": "smartbabycare-6e9ed",
+    "storage_bucket": "smartbabycare-6e9ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629619084886:android:bcbb47c5f9d1b0042335f7",
+        "android_client_info": {
+          "package_name": "com.example.smartbabycare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629619084886-ish8iklbfubu4posvcbs91mt2mbtrdje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNKdjBxgNrZGb_q-y47zmIOXW8kx59WSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629619084886-ish8iklbfubu4posvcbs91mt2mbtrdje.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

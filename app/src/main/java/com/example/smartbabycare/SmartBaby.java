@@ -1,16 +1,19 @@
 package com.example.smartbabycare;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.smartbabycare.AddingChild.AddingChildFragment;
+import com.example.smartbabycare.addingChild.AddingChildFragment;
+import com.example.smartbabycare.viewModel.sharedViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,6 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 public class SmartBaby extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private sharedViewModel mainModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +34,10 @@ public class SmartBaby extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.nav_host_fragment, AddingChildFragment.class, null);
-                transaction.commit();
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+        mainModel = new ViewModelProvider(this).get(sharedViewModel.class);
+        mainModel.setSharedFab(fab);
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -53,6 +49,12 @@ public class SmartBaby extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_nav_home_to_addingChildFragment);
+            }
+        });
     }
 
     @Override
@@ -68,4 +70,7 @@ public class SmartBaby extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }
+

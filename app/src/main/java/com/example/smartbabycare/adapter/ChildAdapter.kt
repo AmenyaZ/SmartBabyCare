@@ -27,10 +27,10 @@ class ChildAdapter (var children: ArrayList<Child>): RecyclerView.Adapter<ChildA
 
     override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
         val currentChild = children[position]
-        holder.childNameTv.text = "Child Name: " + currentChild.ChildName
-        holder.childAgeTv.text = "Child Age: " + currentChild.ChildAge + " Years"
-        val gender: String? = currentChild.ChildGender
-        if (gender.equals("Girl")){
+        holder.childNameTv.text = "Child Name: " + currentChild.childName
+        holder.childAgeTv.text = "Child Age: " + currentChild.childAge + " Years"
+        val gender: String? = currentChild.childGender
+        if (gender.equals("Female")){
 
             holder.childImage.setImageResource(R.drawable.girl)
         }

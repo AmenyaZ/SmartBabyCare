@@ -1,6 +1,6 @@
 package com.example.smartbabycare.model
 
-data class Child(val ChildName: String? = null, val ChildAge: String? = null, val ChildGender: String? = null){
+data class Child(val childName: String? = null, val childAge: String? = null, val childGender: String? = null){
+
 
 }
-

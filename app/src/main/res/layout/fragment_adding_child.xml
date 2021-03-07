@@ -1,14 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddingChild.AddingChildFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".addingChild.AddingChildFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Child Name : " />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Child Name"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvName"
+        app:layout_constraintBottom_toBottomOf="@id/tvName"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:id="@+id/tvDOB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth : " />
+
+    <EditText
+        android:id="@+id/etDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:hint="24/07/1998"
+        app:layout_constraintStart_toEndOf="@id/tvDOB"
+        app:layout_constraintTop_toTopOf="@id/tvDOB"
+        app:layout_constraintBottom_toBottomOf="@id/tvDOB"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:id="@+id/tvGender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDOB"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Child Gender : " />
+
+    <EditText
+        android:id="@+id/etGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Male"
+        app:layout_constraintStart_toEndOf="@id/tvGender"
+        app:layout_constraintTop_toTopOf="@id/tvGender"
+        app:layout_constraintBottom_toBottomOf="@id/tvGender"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:id="@+id/tvPOB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvGender"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Place of Birth : " />
+
+    <EditText
+        android:id="@+id/etPOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Moi Hospital"
+        app:layout_constraintStart_toEndOf="@id/tvPOB"
+        app:layout_constraintTop_toTopOf="@id/tvPOB"
+        app:layout_constraintBottom_toBottomOf="@id/tvPOB"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:id="@+id/tvWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPOB"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Child Weight(Kg) : " />
+
+    <EditText
+        android:id="@+id/etWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="44"
+        app:layout_constraintStart_toEndOf="@id/tvWeight"
+        app:layout_constraintTop_toTopOf="@id/tvWeight"
+        app:layout_constraintBottom_toBottomOf="@id/tvWeight"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp" />
+
+    <Button
+        android:id="@+id/registerChildBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="upload"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etWeight"
+        android:layout_marginTop="30dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
