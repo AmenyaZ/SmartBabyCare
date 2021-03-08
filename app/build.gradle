@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -54,4 +55,12 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 //    Picasso dependency
     implementation 'com.squareup.picasso:picasso:2.71828'
+//    firebase dependencies
+    implementation platform('com.google.firebase:firebase-bom:26.6.0')
+//    java
+    implementation 'com.google.firebase:firebase-analytics'
+//    kotlin
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-database-ktx'
 }
