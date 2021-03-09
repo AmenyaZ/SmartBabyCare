@@ -14,7 +14,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="141dp"
+        android:layout_width="121dp"
         android:layout_height="104dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
