@@ -1,4 +1,4 @@
-package com.example.smartbabycare;
+package com.example.smartbabycare.ui.share;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.smartbabycare.R;
 
 /**
  * A simple {@link Fragment} subclass.
