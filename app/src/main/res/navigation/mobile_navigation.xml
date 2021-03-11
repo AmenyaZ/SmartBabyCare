@@ -41,4 +41,9 @@
         android:name="com.example.smartbabycare.ui.share.ShareFragment"
         android:label="fragment_nav_share"
         tools:layout="@layout/fragment_nav_share" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.smartbabycare.ui.settings.SettingsFragment"
+        android:label="fragment_nav_settings"
+        tools:layout="@layout/fragment_nav_settings" />
 </navigation>
