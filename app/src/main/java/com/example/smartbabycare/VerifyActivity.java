@@ -78,7 +78,7 @@ public class VerifyActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Riders");
+                    DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("registration");
 
                     current_user_db.child(user.getUid()).child("phoneNumber").setValue(phonenumber);
 
