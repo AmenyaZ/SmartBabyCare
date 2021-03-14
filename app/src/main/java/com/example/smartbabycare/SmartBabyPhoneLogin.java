@@ -39,7 +39,7 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
         etPhoneNumber = findViewById(R.id.etPhoneNumber);
         btn_login = findViewById(R.id.btn_login);
         progressbar = findViewById(R.id.progressbar);
-        coordinatorLayout = findViewById(R.id)
+
 
         spinnerCountries.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
 
