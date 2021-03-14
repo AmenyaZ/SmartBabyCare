@@ -1,5 +1,6 @@
 package com.example.smartbabycare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,11 +13,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class VerifyActivity extends AppCompatActivity {
 
@@ -64,6 +71,40 @@ public class VerifyActivity extends AppCompatActivity {
     }
 
     private void signInWithCredential(PhoneAuthCredential credential) {
+        final String phonenumber = getIntent().getStringExtra("phonenumber");
+        mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Riders");
+
+                    current_user_db.child(user.getUid()).child("phoneNumber").setValue(phonenumber);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(VerifyActivity.this, R.style.Theme_SmartBabyCare);
+                    View view = LayoutInflater.from(VerifyActivity.this).inflate(R.layout.success_dialog, null);
+                    TextView textView = view.findViewById(R.id.tvSuccess);
+                    ImageView imageButton = view.findViewById(R.id.ivSuccessCheck);
+                    textView.setText("Login Success!!!"+ "Welcome");
+
+                    imageButton.setImageResource(R.drawable.ic_baseline_check_circle_24);
+
+
+                    builder.setView(view);
+                    builder.show();
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+
+                }
+                else {
+
+                    Toast.makeText(VerificationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+
+
+                }
+            }
+        });
     }
 
     private void sendVerificationCode(String phonenumber) {
