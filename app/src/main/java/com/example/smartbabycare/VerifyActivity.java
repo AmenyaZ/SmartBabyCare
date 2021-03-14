@@ -126,6 +126,14 @@ public class VerifyActivity extends AppCompatActivity {
         @Override
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
+            String code = phoneAuthCredential.getSmsCode();
+            if (code != null) {
+                etCode.setText(code);
+                progressbar.setVisibility(View.VISIBLE);
+                verifyCode(code);
+
+
+            }
         }
 
         @Override
