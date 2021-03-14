@@ -63,6 +63,9 @@ public class VerifyActivity extends AppCompatActivity {
         signInWithCredential(credential);
     }
 
+    private void signInWithCredential(PhoneAuthCredential credential) {
+    }
+
     private void sendVerificationCode(String phonenumber) {
     }
 }
