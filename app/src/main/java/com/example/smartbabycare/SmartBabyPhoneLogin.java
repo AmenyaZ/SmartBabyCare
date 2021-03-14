@@ -2,6 +2,7 @@ package com.example.smartbabycare;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
 
     private ProgressBar progressbar;
 
+    CoordinatorLayout coordinatorLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
         etPhoneNumber = findViewById(R.id.etPhoneNumber);
         btn_login = findViewById(R.id.btn_login);
         progressbar = findViewById(R.id.progressbar);
+        coordinatorLayout = findViewById(R.id)
 
         spinnerCountries.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
 
