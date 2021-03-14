@@ -93,13 +93,13 @@ public class VerifyActivity extends AppCompatActivity {
 
                     builder.setView(view);
                     builder.show();
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),SmartBaby.class);
                     startActivity(intent);
 
                 }
                 else {
 
-                    Toast.makeText(VerificationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(VerifyActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
 
                 }
