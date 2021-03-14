@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 public class VerifyActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class VerifyActivity extends AppCompatActivity {
     private String verificationId;
 
     private  FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +37,7 @@ public class VerifyActivity extends AppCompatActivity {
         btn_Continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(VerifyActivity.this, SmartBaby.class));
-                finish();
+
             }
         });
     }
