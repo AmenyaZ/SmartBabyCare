@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 
 public class VerifyActivity extends AppCompatActivity {
@@ -57,6 +59,8 @@ public class VerifyActivity extends AppCompatActivity {
     }
 
     private void verifyCode(String code) {
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+        signInWithCredential(credential);
     }
 
     private void sendVerificationCode(String phonenumber) {
