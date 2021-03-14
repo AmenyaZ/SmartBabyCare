@@ -56,6 +56,9 @@ public class VerifyActivity extends AppCompatActivity {
         });
     }
 
+    private void verifyCode(String code) {
+    }
+
     private void sendVerificationCode(String phonenumber) {
     }
 }
