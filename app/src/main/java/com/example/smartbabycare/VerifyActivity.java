@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.concurrent.TimeUnit;
 
 public class VerifyActivity extends AppCompatActivity {
 
@@ -108,5 +111,13 @@ public class VerifyActivity extends AppCompatActivity {
     }
 
     private void sendVerificationCode(String phonenumber) {
+        progressbar.setVisibility(View.VISIBLE);
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                phonenumber,
+                60,
+                TimeUnit.SECONDS,
+                TaskExecutors.MAIN_THREAD,
+                mCallBack
+        );
     }
 }
