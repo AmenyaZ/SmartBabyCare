@@ -84,6 +84,7 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
         try {
             ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
+            NetworkInfo nInfo = cm.getActiveNetworkInfo();
             //NetworkInfo nInfo = cm.getActiveNetworkInfo();
             connected = nInfo != null && nInfo.isAvailable() && nInfo.isConnected();
             return connected;
