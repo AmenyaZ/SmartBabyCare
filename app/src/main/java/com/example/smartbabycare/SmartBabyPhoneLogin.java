@@ -68,7 +68,7 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
                 }
                 else {
                     Snackbar snackbar = Snackbar
-                            .make(SmartBabyPhoneLogin.this, "www.journaldev.com", Snackbar.LENGTH_LONG);
+                            .make(view, "No network Connectivity detected, Try Again!!!!", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
             }
