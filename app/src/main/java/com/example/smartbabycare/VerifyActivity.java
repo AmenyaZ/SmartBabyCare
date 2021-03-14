@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class VerifyActivity extends AppCompatActivity {
 
     private Button btn_Continue;
@@ -16,6 +18,8 @@ public class VerifyActivity extends AppCompatActivity {
     private ProgressBar progressbar;
 
     private String verificationId;
+
+    private  FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
