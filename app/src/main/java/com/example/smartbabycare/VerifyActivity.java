@@ -37,6 +37,7 @@ public class VerifyActivity extends AppCompatActivity {
         btn_Continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String code = etCode.getText().toString().trim();
 
             }
         });
