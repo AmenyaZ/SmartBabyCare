@@ -149,5 +149,5 @@ public class VerifyActivity extends AppCompatActivity {
 
             verificationId =s;
         }
-    }
+    };
 }
