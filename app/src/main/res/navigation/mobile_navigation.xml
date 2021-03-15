@@ -32,11 +32,6 @@
         android:label="fragment_adding_child"
         tools:layout="@layout/fragment_adding_child" />
     <fragment
-        android:id="@+id/nav_profile2"
-        android:name="com.example.smartbabycare.ui.profile.nav_profile"
-        android:label="fragment_nav_profile"
-        tools:layout="@layout/fragment_nav_profile" />
-    <fragment
         android:id="@+id/nav_share2"
         android:name="com.example.smartbabycare.ui.share.ShareFragment"
         android:label="fragment_nav_share"
@@ -51,4 +46,9 @@
         android:name="com.example.smartbabycare.ui.about.AboutFragment"
         android:label="fragment_nav_about"
         tools:layout="@layout/fragment_nav_about" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.smartbabycare.ui.profile.ProfileFragment"
+        android:label="fragment_nav_profile"
+        tools:layout="@layout/fragment_nav_profile" />
 </navigation>
