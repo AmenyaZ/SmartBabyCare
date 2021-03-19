@@ -130,15 +130,7 @@ public class VerifyActivity extends AppCompatActivity {
                         .setCallbacks(mCallBack)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
-        /*PhoneAuthProvider.getInstance().verifyPhoneNumber(
-      //  PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phonenumber,
-                60,
-                TimeUnit.SECONDS,
-                (Activity) TaskExecutors.MAIN_THREAD,
-                mCallBack
-        );*/
-       // PhoneAuthProvider.verifyPhoneNumber();
+
     }
 
     private  PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
