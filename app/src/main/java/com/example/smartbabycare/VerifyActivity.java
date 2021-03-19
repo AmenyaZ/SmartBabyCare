@@ -21,10 +21,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,11 +44,15 @@ public class VerifyActivity extends AppCompatActivity {
 
     private  FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private PhoneAuthProvider.ForceResendingToken mResendToken;
+    //private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
+
+        mAuth = FirebaseAuth.getInstance();
 
         btn_Continue = findViewById(R.id.btn_Continue);
         etCode = findViewById(R.id.etCode);
@@ -115,13 +122,15 @@ public class VerifyActivity extends AppCompatActivity {
 
     private void sendVerificationCode(String phonenumber) {
         progressbar.setVisibility(View.VISIBLE);
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phonenumber,
-                60,
-                TimeUnit.SECONDS,
-                (Activity) TaskExecutors.MAIN_THREAD,
-                mCallBack
-        );
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(mAuth)
+                        .setPhoneNumber(phonenumber)       // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(VerifyActivity.this)                 // Activity (for callback binding)
+                        .setCallbacks(mCallBack)          // OnVerificationStateChangedCallbacks
+                        .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+
     }
 
     private  PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -136,10 +145,20 @@ public class VerifyActivity extends AppCompatActivity {
 
 
             }
+
         }
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
+
+            if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                // Invalid request
+            } else if (e instanceof FirebaseTooManyRequestsException) {
+                // The SMS quota for the project has been exceeded
+            }
+
+
+
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 
         }
@@ -151,4 +170,14 @@ public class VerifyActivity extends AppCompatActivity {
             verificationId =s;
         }
     };
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentuser = mAuth.getCurrentUser();
+        updateUI(currentuser);
+    }
+
+    private void updateUI(FirebaseUser currentuser) {
+    }
 }
