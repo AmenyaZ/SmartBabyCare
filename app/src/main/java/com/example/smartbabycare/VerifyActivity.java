@@ -45,7 +45,7 @@ public class VerifyActivity extends AppCompatActivity {
     private  FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+    //private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,4 +178,14 @@ public class VerifyActivity extends AppCompatActivity {
             verificationId =s;
         }
     };
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentuser = mAuth.getCurrentUser();
+        updateUI(currentuser);
+    }
+
+    private void updateUI(FirebaseUser currentuser) {
+    }
 }
