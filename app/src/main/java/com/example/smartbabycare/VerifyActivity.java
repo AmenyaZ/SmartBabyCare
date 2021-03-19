@@ -42,11 +42,15 @@ public class VerifyActivity extends AppCompatActivity {
 
     private  FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private PhoneAuthProvider.ForceResendingToken mResendToken;
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
+
+        mAuth = FirebaseAuth.getInstance();
 
         btn_Continue = findViewById(R.id.btn_Continue);
         etCode = findViewById(R.id.etCode);
@@ -120,7 +124,7 @@ public class VerifyActivity extends AppCompatActivity {
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber(phonenumber)       // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
+                        .setActivity(VerifyActivity.this)                 // Activity (for callback binding)
                         .setCallbacks(mCallBack)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
