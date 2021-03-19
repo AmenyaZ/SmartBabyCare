@@ -74,15 +74,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-database-ktx'
-<<<<<<< HEAD
-<<<<<<< HEAD
     //multidex Library
     implementation 'com.android.support:multidex:1.0.3'
-=======
 
-    compile 'de.hdodenhof:circleimageview:3.1.0'
->>>>>>> c1b0f1c3cbfb334e990d524bc444ae9c9b175644
-=======
 
->>>>>>> 18fb15016fb167b0b3986cf4593bc043c91f1d7d
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
