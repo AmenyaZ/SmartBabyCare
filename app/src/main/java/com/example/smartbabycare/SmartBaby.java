@@ -7,6 +7,7 @@ import android.view.Menu;
 
 //import com.example.smartbabycare.addingChild.AddingChildFragment;
 import com.example.smartbabycare.viewModel.sharedViewModel;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -33,7 +34,7 @@ public class SmartBaby extends AppCompatActivity {
         setContentView(R.layout.activity_smart_baby);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        ExtendedFloatingActionButton fab = findViewById(R.id.fab);
 
         mainModel = new ViewModelProvider(this).get(sharedViewModel.class);
         mainModel.setSharedFab(fab);
