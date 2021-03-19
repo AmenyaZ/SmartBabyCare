@@ -25,6 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -115,13 +116,23 @@ public class VerifyActivity extends AppCompatActivity {
 
     private void sendVerificationCode(String phonenumber) {
         progressbar.setVisibility(View.VISIBLE);
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(mAuth)
+                        .setPhoneNumber(phonenumber)       // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(this)                 // Activity (for callback binding)
+                        .setCallbacks(mCallBack)          // OnVerificationStateChangedCallbacks
+                        .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+        /*PhoneAuthProvider.getInstance().verifyPhoneNumber(
+      //  PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phonenumber,
                 60,
                 TimeUnit.SECONDS,
                 (Activity) TaskExecutors.MAIN_THREAD,
                 mCallBack
-        );
+        );*/
+       // PhoneAuthProvider.verifyPhoneNumber();
     }
 
     private  PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
