@@ -17,6 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     buildFeatures{
@@ -65,4 +66,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-database-ktx'
+    //multidex Library
+    implementation 'com.android.support:multidex:1.0.3'
 }
