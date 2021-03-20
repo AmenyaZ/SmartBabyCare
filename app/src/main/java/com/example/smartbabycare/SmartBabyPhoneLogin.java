@@ -69,6 +69,7 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
                     Intent intent = new Intent(SmartBabyPhoneLogin.this, VerifyActivity.class);
                     intent.putExtra("phonenumber", phoneNumber);
                     startActivity(intent);
+                    finish();
                 }
                 else {
                     Snackbar snackbar = Snackbar
