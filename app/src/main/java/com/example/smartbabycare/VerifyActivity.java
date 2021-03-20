@@ -108,6 +108,7 @@ public class VerifyActivity extends AppCompatActivity {
                     builder.show();
                     Intent intent = new Intent(getApplicationContext(),ParentDetailsActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }
                 else {
