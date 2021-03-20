@@ -3,19 +3,19 @@
     package="com.example.smartbabycare">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".MainApplication"
-        
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartBabyCare">
-        <activity android:name=".VerifyActivity"></activity>
+        <activity android:name=".ParentsDetailsActivity"></activity>
+        <activity android:name=".VerifyActivity" />
         <activity android:name=".SmartBabyPhoneLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +27,14 @@
             android:name=".SmartBaby"
             android:label="@string/title_activity_smart_baby"
             android:theme="@style/Theme.SmartBabyCare.NoActionBar">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
     </application>
 
