@@ -1,44 +1,28 @@
 package com.example.smartbabycare.model;
 
 public class ParentDetails {
-    public  String mName, mEmail, DoB,mPhonenumber;
+    public  String mName, mEmail, mDoB,mPhonenumber;
 
     public ParentDetails() {
     }
 
-    public ParentDetails(String mName, String mEmail, String doB, String mPhonenumber) {
+    public ParentDetails(String mName, String mEmail, String mDoB, String mPhonenumber) {
         this.mName = mName;
         this.mEmail = mEmail;
-        DoB = doB;
+        this.mDoB = mDoB;
         this.mPhonenumber = mPhonenumber;
-    }
-
-    public String getmName() {
-        return mName;
     }
 
     public void setmName(String mName) {
         this.mName = mName;
     }
 
-    public String getmEmail() {
-        return mEmail;
-    }
-
     public void setmEmail(String mEmail) {
         this.mEmail = mEmail;
     }
 
-    public String getDoB() {
-        return DoB;
-    }
-
-    public void setDoB(String doB) {
-        DoB = doB;
-    }
-
-    public String getmPhonenumber() {
-        return mPhonenumber;
+    public void setmDoB(String mDoB) {
+        this.mDoB = mDoB;
     }
 
     public void setmPhonenumber(String mPhonenumber) {
