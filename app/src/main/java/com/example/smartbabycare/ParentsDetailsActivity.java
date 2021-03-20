@@ -1,18 +1,25 @@
 package com.example.smartbabycare;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.smartbabycare.model.ParentDetails;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,16 +29,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 public class ParentsDetailsActivity extends AppCompatActivity {
 
     EditText et_Name,et_email,etPhone_Number,etDoB;
     Button btnSubmit;
+    ImageView profile;
+    Uri image_uri;
 
     private DatabaseReference mDatabase;
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String userid = user.getUid();
+
+    private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
+    private static final int REQUEST_CODE_SELECT_IMAGE = 2;
 
     int TAKE_IMAGE_CODE = 10001;
     private FirebaseAuth mAuth;
@@ -47,6 +60,7 @@ public class ParentsDetailsActivity extends AppCompatActivity {
         etPhone_Number = findViewById(R.id.etPhone_Number);
         etDoB = findViewById(R.id.etDoB);
         btnSubmit = findViewById(R.id.btnSubmit);
+        profile = findViewById(R.id.profile);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("registration").child(userid);
 
@@ -74,7 +88,9 @@ public class ParentsDetailsActivity extends AppCompatActivity {
 
 
 
+
     }
+
 
     private void saveParentsDetails() {
 
