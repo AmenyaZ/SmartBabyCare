@@ -100,7 +100,7 @@ public class ParentDetailsActivity extends AppCompatActivity {
                 );
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                assert user != null;
+               // assert user != null;
                 String userId = user.getUid();
 
                 DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("registration").child(userId);
