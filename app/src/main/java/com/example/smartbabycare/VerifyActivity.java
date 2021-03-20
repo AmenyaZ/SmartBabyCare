@@ -106,7 +106,7 @@ public class VerifyActivity extends AppCompatActivity {
 
                     builder.setView(view);
                     builder.show();
-                    Intent intent = new Intent(getApplicationContext(),SmartBaby.class);
+                    Intent intent = new Intent(getApplicationContext(),ParentsDetailsActivity.class);
                     startActivity(intent);
 
                 }
