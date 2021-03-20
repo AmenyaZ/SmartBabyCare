@@ -88,7 +88,7 @@ public class ParentDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final String mName = et_Name.getText().toString();
                 final String mEmail = et_email.getText().toString();
-                final  String DoB = etDoB.getText().toString();
+                final  String mDoB = etDoB.getText().toString();
                 final  String mPhonenumber = etPhone_Number.getText().toString();
 
                 ParentDetails parentDetails = new ParentDetails(
