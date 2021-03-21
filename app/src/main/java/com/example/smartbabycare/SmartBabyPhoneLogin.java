@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.smartbabycare.model.CountryData;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SmartBabyPhoneLogin extends AppCompatActivity {
 
@@ -69,6 +70,7 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
                     Intent intent = new Intent(SmartBabyPhoneLogin.this, VerifyActivity.class);
                     intent.putExtra("phonenumber", phoneNumber);
                     startActivity(intent);
+                    finish();
                 }
                 else {
                     Snackbar snackbar = Snackbar
@@ -92,5 +94,16 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
             Log.e("Connectivity Exception", e.getMessage());
         }
         return false;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent = new Intent(this, SmartBabyPhoneLogin.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            startActivity(intent);
+        }
     }
 }

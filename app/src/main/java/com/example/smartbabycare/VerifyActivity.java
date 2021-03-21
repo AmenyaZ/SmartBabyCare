@@ -99,15 +99,16 @@ public class VerifyActivity extends AppCompatActivity {
                     View view = LayoutInflater.from(VerifyActivity.this).inflate(R.layout.success_dialog, null);
                     TextView textView = view.findViewById(R.id.tvSuccess);
                     ImageView imageButton = view.findViewById(R.id.ivSuccessCheck);
-                    textView.setText("Login Success!!!"+ "Welcome");
+                    textView.setText("Login Success!!!"+ "Welcome" + phonenumber);
 
                     imageButton.setImageResource(R.drawable.ic_baseline_check_circle_24);
 
 
                     builder.setView(view);
                     builder.show();
-                    Intent intent = new Intent(getApplicationContext(),SmartBaby.class);
+                    Intent intent = new Intent(getApplicationContext(),ParentDetailsActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }
                 else {

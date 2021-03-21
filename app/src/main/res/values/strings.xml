@@ -20,4 +20,9 @@
 
     <string name="menu_about">About</string>
     <string name="menu_profile">Profile</string>
+    <string name="name">Full Names</string>
+    <string name="prompt_email">Email (Optional)</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="prompt_password">Date of Birth (DoB)</string>
+    <string name="register">Submit Details</string>
 </resources>
