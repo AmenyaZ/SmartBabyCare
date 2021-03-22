@@ -117,4 +117,17 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+            if (FirebaseAuth.getInstance().getCurrentUser() != null){
+                Intent intent = new Intent(this, SmartBaby.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                startActivity(intent);
+
+        }
+    }
 }
