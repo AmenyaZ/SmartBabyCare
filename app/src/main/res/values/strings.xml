@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">SmartBabyCare</string>
+    <string name="vaccine_schedule">Vaccine Schedule</string>
+    <string name="cancel">Cancel</string>
+    <string name="at_birth">At birth</string>
+    <string name="at_birth">At birth</string>
+    <string name="given_on">Given On</string>
+    <string name="description">Description</string>
+    <string name="_1st_dose">1st dose</string>
+    <string name="description_of_vaccine">Description of vaccine</string>
+    <string name="bcg">BCG</string>
+    <string name="hep_b1">Hep-B1</string>
+    <string name="vaccine_description">vaccine description</string>
+    <string name="opv_0">OPV-0</string>
+    <string name="opv_0">OPV-0</string>
+    <string name="_6_weeks">6 weeks</string>
+    <string name="dtp1">DTP1</string>
+    <string name="hib_1">HIB 1</string>
+    <string name="hep_b2">Hep-b2</string>
 </resources>
