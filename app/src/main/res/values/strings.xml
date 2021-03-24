@@ -26,9 +26,9 @@
 
     <string name="menu_about">About</string>
     <string name="menu_profile">Profile</string>
+    <string name="name">Nme</string>
+    <string name="prompt_email">Prompt Email</string>
     <string name="phone_number">Phone Number</string>
-    <string name="description">Description</string>
-    <string name="dtp1">DTP1</string>
-    <string name="vaccine_schedule">Vaccine_schedule</string>
-
+    <string name="prompt_password">Prompt Password</string>
+    <string name="register">Register</string>
 </resources>
