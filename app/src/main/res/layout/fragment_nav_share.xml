@@ -74,14 +74,14 @@
                     android:weightSum="3">
 
                     <ImageView
-                        android:id="@+id/facebook"
+                        android:id="@+id/img_facebook"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
                         android:src="@drawable/ic_facecook" />
                     <ImageView
-                        android:id="@+id/twitter"
+                        android:id="@+id/img_twitter"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
@@ -89,7 +89,7 @@
                         android:src="@drawable/ic_twitter" />
 
                     <ImageView
-                        android:id="@+id/google"
+                        android:id="@+id/img_google"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
@@ -108,7 +108,7 @@
 
 
         <ImageView
-            android:id="@+id/linkedin"
+            android:id="@+id/img_linkedin"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
@@ -116,7 +116,7 @@
             android:src="@drawable/ic_linkedin" />
 
         <ImageView
-            android:id="@+id/whatsapp"
+            android:id="@+id/img_whatsapp"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
@@ -124,7 +124,7 @@
             android:src="@drawable/ic_whatsapp" />
 
         <ImageView
-            android:id="@+id/gmail"
+            android:id="@+id/img_gmail"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"

@@ -41,6 +41,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,9 +53,10 @@ import com.example.smartbabycare.ui.home.HomeFragment;
 import java.util.Objects;
 
 public class ShareFragment extends AppCompatActivity {
-    private ImageView linkedin;
+
     private ImageView facebook;
     private ImageView twitter;
+    private ImageView linkedin;
     private ImageView whatsapp;
     private  ImageView mail;
     private ProgressBar progressBar;
@@ -64,5 +66,13 @@ public class ShareFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_nav_about);
 
+        facebook = findViewById(R.id.img_facebook);
+        twitter = findViewById(R.id.img_twitter);
+        linkedin = findViewById(R.id.img_linkedin);
+        whatsapp = findViewById(R.id.img_whatsapp);
+        mail = findViewById(R.id.img_gmail);
+
+
     }
+
 }
