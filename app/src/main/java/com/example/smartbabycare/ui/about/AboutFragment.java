@@ -48,7 +48,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartbabycare.R;
-import com.example.smartbabycare.ui.home.HomeFragment;
+import com.example.smartbabycare.SmartBaby;
+//import com.example.smartbabycare.ui.home.HomeFragment;
 
 
 import java.util.Objects;
@@ -72,7 +73,7 @@ public class AboutFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                Intent intent = new Intent(AboutFragment.this, HomeFragment.class);
+                Intent intent = new Intent(getApplicationContext(), SmartBaby.class);
                 startActivity(intent);
                 finish();
                 return;

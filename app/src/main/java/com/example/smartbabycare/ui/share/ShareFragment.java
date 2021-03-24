@@ -48,7 +48,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartbabycare.R;
-import com.example.smartbabycare.ui.home.HomeFragment;
+//import com.example.smartbabycare.ui.home.HomeFragment;
 
 
 import java.util.Objects;
