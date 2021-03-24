@@ -78,6 +78,7 @@ class AddingChildFragment : Fragment() {
             var key : String? = reference.push().key
             var child: Child = Child(name, ageYear.toString(), gender)
             reference.child(key!!).setValue(child)
+
         }
         return root
     }
