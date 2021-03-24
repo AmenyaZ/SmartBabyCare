@@ -72,8 +72,13 @@ public class AboutFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                startActivity(new Intent(getApplicationContext(), HomeFragment.class));
+                Intent intent = new Intent(AboutFragment.this, HomeFragment.class);
+                startActivity(intent);
                 finish();
+                return;
+//
+//                startActivity(new Intent(getApplicationContext(), HomeFragment.class));
+//                finish();
             }
         });
     }
