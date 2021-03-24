@@ -52,7 +52,12 @@ import com.example.smartbabycare.ui.home.HomeFragment;
 import java.util.Objects;
 
 public class ShareFragment extends AppCompatActivity {
-    private ImageView btn_backHome;
+    private ImageView linkedin;
+    private ImageView facebook;
+    private ImageView twitter;
+    private ImageView whatsapp;
+    private  ImageView mail;
+
     private ProgressBar progressBar;
 
     @Override
