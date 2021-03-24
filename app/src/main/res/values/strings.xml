@@ -26,5 +26,9 @@
 
     <string name="menu_about">About</string>
     <string name="menu_profile">Profile</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="description">Description</string>
+    <string name="dtp1">DTP1</string>
+    <string name="vaccine_schedule">Vaccine_schedule</string>
 
 </resources>

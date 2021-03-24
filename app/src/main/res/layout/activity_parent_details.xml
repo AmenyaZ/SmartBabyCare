@@ -50,7 +50,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:hint="@string/name"
+                            android:hint="Name"
                             android:inputType="textNoSuggestions"
                             android:maxLines="1"
                             android:paddingStart="5dp"
@@ -70,7 +70,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:hint="@string/prompt_email"
+                            android:hint="Prompt Email"
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:paddingStart="5dp"
@@ -111,7 +111,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:hint="@string/prompt_password"
+                            android:hint="Prompt Password"
                             android:inputType="date"
                             android:paddingStart="5dp"
                             android:paddingLeft="5dp" />
@@ -124,7 +124,7 @@
                         android:layout_height="50dp"
                         android:layout_margin="20dp"
                         android:background="@drawable/button_gradient"
-                        android:text="@string/register"
+                        android:text="Register"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"/>
 
