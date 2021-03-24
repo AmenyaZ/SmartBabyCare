@@ -26,9 +26,20 @@
 
     <string name="menu_about">About</string>
     <string name="menu_profile">Profile</string>
-    <string name="name">Nme</string>
+    <string name="name">Name</string>
     <string name="prompt_email">Prompt Email</string>
     <string name="phone_number">Phone Number</string>
     <string name="prompt_password">Prompt Password</string>
     <string name="register">Register</string>
+    <string name="vaccine_schedule">Vaccine Schedule</string>
+    <string name="cancel">Cancel</string>
+    <string name="at_birth">At Birth</string>
+    <string name="description">Description</string>
+    <string name="bcg">BCG</string>
+    <string name="hep_b1">Help B1</string>
+    <string name="opv_0">OPV 0</string>
+    <string name="_6_weeks">6 Weeks</string>
+    <string name="dtp1">DTP1</string>
+    <string name="hib_1">HIB 1</string>
+    <string name="hep_b2">HEB B2</string>
 </resources>

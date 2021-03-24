@@ -22,7 +22,7 @@
              android:layout_width="32dp"
              android:layout_height="32dp"
              android:contentDescription="@string/app_name"
-             android:src="@drawable/ic_baseline_arrow_back_24"
+             app:srcCompat="@drawable/ic_baseline_arrow_back_24"
              app:tint="@color/black" />
 
          <TextView
