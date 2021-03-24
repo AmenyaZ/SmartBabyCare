@@ -68,28 +68,64 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="45dp"
-        android:orientation="vertical">
-
-        <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/facebook"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_facecook" />
+        <ImageView
+            android:id="@+id/twitter"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_twitter" />
+        <ImageView
+            android:id="@+id/google"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_baby" />
+            android:src="@drawable/ic_google" />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_baby" />
+
+        <ImageView
+            android:id="@+id/linkedin"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_linkedin" />
+
+        <ImageView
+            android:id="@+id/whatsapp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_whatsapp" />
+
+        <ImageView
+            android:id="@+id/gmail"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_gmail" />
         </LinearLayout>
         <ProgressBar
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
