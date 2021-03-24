@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScheduleActivity">
+
+     <LinearLayout
+         android:id="@+id/layoutToolbar"
+         android:layout_width="match_parent"
+         android:layout_height="?actionBarSize"
+         android:background="@color/skyblue"
+         android:gravity="center_vertical"
+         android:orientation="horizontal"
+         android:paddingStart="10dp"
+         android:paddingEnd="10dp"
+         app:layout_constraintTop_toTopOf="parent">
+
+         <ImageView
+             android:layout_width="32dp"
+             android:layout_height="32dp"
+             android:contentDescription="@string/app_name"
+             android:src="@drawable/ic_baseline_arrow_back_24"
+             app:tint="@color/black" />
+
+         <TextView
+             android:id="@+id/schedule"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:layout_marginStart="10dp"
+             android:layout_marginEnd="10dp"
+             android:textColor="@color/black"
+             android:textStyle="bold"
+             android:textSize="18sp"
+             android:text="@string/vaccine_schedule"
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textAllCaps="true"
+             android:textColor="@color/black"
+             android:textStyle="bold"
+             android:textSize="14sp"
+             android:text="@string/cancel"
+             />
+
+     </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/drop"
+        app:layout_constraintTop_toBottomOf="@+id/layoutToolbar" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/grey"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
+        app:layout_constraintBottom_toTopOf="@+id/viewDivider"
+        />
+
+    <TextView
+        android:id="@+id/at_birth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/at_birth"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/date_given"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
+        />
+
+
+    <TextView
+        android:id="@+id/date_given"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/description"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/at_birth"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
+
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey"
+        android:layout_below="@id/at_birth"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/at_birth" />
+
+
+    <View
+        android:id="@+id/viewImage"
+        android:layout_width="18dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle"
+        />
+
+    <ImageView
+        android:id="@+id/ImageNeedle"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@+id/viewImage"
+        app:layout_constraintTop_toBottomOf="@+id/viewDivider"
+        android:layout_marginLeft="20dp" />
+
+    <View
+        android:id="@+id/viewPlaced"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle" />
+
+    <TextView
+        android:id="@+id/BCG"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/bcg"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPlaced"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/BCG"
+        app:layout_constraintStart_toStartOf="@id/BCG"
+        app:layout_constraintTop_toBottomOf="@+id/viewPlaced" />
+
+    <View
+        android:id="@+id/viewImage1"
+        android:layout_width="18dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@id/ImageNeedle2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle2" />
+
+    <ImageView
+        android:id="@+id/ImageNeedle2"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@+id/viewImage1"
+        app:layout_constraintTop_toBottomOf="@+id/ImageNeedle" />
+
+    <View
+        android:id="@+id/viewPlaced2"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle2"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle2"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle2"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle2" />
+
+    <TextView
+        android:id="@+id/Hep_B1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/hep_b1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/viewPlaced2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle2" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/Hep_B1"
+        app:layout_constraintStart_toStartOf="@id/Hep_B1"
+        app:layout_constraintTop_toBottomOf="@id/viewPlaced2"/>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/viewImage1"
+        app:layout_constraintEnd_toEndOf="@id/viewImage"
+        app:layout_constraintStart_toStartOf="@id/viewImage"
+        app:layout_constraintTop_toBottomOf="@id/viewImage" />
+    <View
+        android:id="@+id/viewImage2"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@id/ImageNeedle3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle3"/>
+    <ImageView
+        android:id="@+id/ImageNeedle3"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@id/viewImage2"
+        app:layout_constraintTop_toBottomOf="@id/ImageNeedle2"/>
+
+    <View
+        android:id="@+id/viewPlaced3"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/ImageNeedle3"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle3"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle3"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle3"/>
+    <TextView
+        android:id="@+id/OPV_0"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/opv_0"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/viewPlaced3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/OPV_0"
+        app:layout_constraintStart_toStartOf="@id/OPV_0"
+        app:layout_constraintTop_toBottomOf="@id/viewPlaced3"/>
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/viewImage2"
+        app:layout_constraintEnd_toEndOf="@id/viewImage1"
+        app:layout_constraintStart_toStartOf="@id/viewImage1"
+        app:layout_constraintTop_toBottomOf="@id/viewImage1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/drop"
+        app:layout_constraintTop_toBottomOf="@+id/ImageNeedle3" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/grey"
+        app:layout_constraintTop_toBottomOf="@id/viewDivider1"
+        app:layout_constraintBottom_toTopOf="@+id/ImageNeedle3"
+        />
+
+    <View
+        android:id="@+id/viewDivider1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/at_6Weeks"
+        android:layout_marginTop="8dp"
+        android:background="@color/grey"
+        app:layout_constraintTop_toBottomOf="@+id/at_6Weeks" />
+
+    <TextView
+        android:id="@+id/at_6Weeks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/_6_weeks"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/date_given"
+        app:layout_constraintTop_toBottomOf="@id/ImageNeedle3"
+        />
+    <TextView
+        android:id="@+id/date_given1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/description"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/at_6Weeks"
+        app:layout_constraintTop_toBottomOf="@id/ImageNeedle3" />
+
+    <View
+        android:id="@+id/viewImage3"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/ImageNeedle4"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@+id/viewImage3"
+        app:layout_constraintTop_toBottomOf="@+id/at_6Weeks"
+        android:layout_marginLeft="20dp" />
+    <View
+        android:id="@+id/viewPlaced4"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle4"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle4"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle4"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle4" />
+    <TextView
+        android:id="@+id/DTP1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/dtp1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPlaced4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/DTP1"
+        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintStart_toStartOf="@id/DTP1"
+        app:layout_constraintTop_toBottomOf="@+id/DTP1" />
+    <View
+        android:id="@+id/viewImage4"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle5"
+        android:layout_marginLeft="30dp" />
+    <ImageView
+        android:id="@+id/ImageNeedle5"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@+id/viewImage4"
+        app:layout_constraintTop_toBottomOf="@+id/ImageNeedle4"
+        android:layout_marginLeft="20dp" />
+    <View
+        android:id="@+id/viewPlaced5"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle5"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle5"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle5"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle5" />
+    <TextView
+        android:id="@+id/HIB1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/hib_1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPlaced5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle5" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/HIB1"
+        app:layout_constraintStart_toStartOf="@id/HIB1"
+        app:layout_constraintTop_toBottomOf="@+id/HIB1" />
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/viewImage4"
+        app:layout_constraintEnd_toEndOf="@id/viewImage3"
+        app:layout_constraintStart_toStartOf="@id/viewImage3"
+        app:layout_constraintTop_toBottomOf="@id/viewImage3" />
+    <View
+        android:id="@+id/viewImage5"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle6"
+        android:layout_marginLeft="30dp" />
+    <ImageView
+        android:id="@+id/ImageNeedle6"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@+id/viewImage5"
+        app:layout_constraintTop_toBottomOf="@+id/ImageNeedle5"
+        android:layout_marginLeft="20dp" />
+    <View
+        android:id="@+id/viewPlaced6"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle6"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle6"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle6"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle6" />
+    <TextView
+        android:id="@+id/Hep_b2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/hep_b2"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPlaced6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle6" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/Hep_b2"
+        app:layout_constraintStart_toStartOf="@id/Hep_b2"
+        app:layout_constraintTop_toBottomOf="@+id/Hep_b2" />
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/viewImage5"
+        app:layout_constraintEnd_toEndOf="@id/viewImage4"
+        app:layout_constraintStart_toStartOf="@id/viewImage4"
+        app:layout_constraintTop_toBottomOf="@id/viewImage4" />
+    <View
+        android:id="@+id/viewImage6"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle7"
+        android:layout_marginLeft="30dp" />
+    <ImageView
+        android:id="@+id/ImageNeedle7"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@+id/viewImage6"
+        app:layout_constraintTop_toBottomOf="@+id/ImageNeedle6"
+        android:layout_marginLeft="20dp" />
+    <View
+        android:id="@+id/viewPlaced7"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle7"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle7"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle7"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle7" />
+    <TextView
+        android:id="@+id/OPV_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="OPV 1/IPV 1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPlaced7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle7" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/OPV_1"
+        app:layout_constraintStart_toStartOf="@id/OPV_1"
+        app:layout_constraintTop_toBottomOf="@+id/OPV_1" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/viewImage6"
+        app:layout_constraintEnd_toEndOf="@id/viewImage5"
+        app:layout_constraintStart_toStartOf="@id/viewImage"
+        app:layout_constraintTop_toBottomOf="@id/viewImage5" />
+    <View
+        android:id="@+id/viewImage7"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/shape_status_completed"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ImageNeedle8"
+        android:layout_marginLeft="30dp" />
+    <ImageView
+        android:id="@+id/ImageNeedle8"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/needle"
+        app:layout_constraintStart_toEndOf="@+id/viewImage7"
+        app:layout_constraintTop_toBottomOf="@+id/ImageNeedle7"
+        android:layout_marginLeft="20dp" />
+    <View
+        android:id="@+id/viewPlaced8"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageNeedle8"
+        app:layout_constraintEnd_toEndOf="@id/ImageNeedle8"
+        app:layout_constraintStart_toStartOf="@id/ImageNeedle8"
+        app:layout_constraintTop_toTopOf="@+id/ImageNeedle8" />
+    <TextView
+        android:id="@+id/PCV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:text="OPV 1/PCV 1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPlaced8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImageNeedle8" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/PCV1"
+        app:layout_constraintStart_toStartOf="@id/PCV1"
+        app:layout_constraintTop_toBottomOf="@+id/PCV1" />
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/viewImage7"
+        app:layout_constraintEnd_toEndOf="@id/viewImage6"
+        app:layout_constraintStart_toStartOf="@id/viewImage"
+        app:layout_constraintTop_toBottomOf="@id/viewImage6" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -1,5 +1,6 @@
 package com.example.smartbabycare.addingChild
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -45,6 +47,22 @@ class AddingChildFragment : Fragment() {
             val year = calenderInstance.get(Calendar.YEAR)
             val month = calenderInstance.get(Calendar.MONTH)
             val day = calenderInstance.get(Calendar.DAY_OF_MONTH)
+            /*val datePickerOnDataSetListener =
+                    DatePickerDialog.OnDateSetListener{ datePicker, i, i2, i3 ->
+                calenderInstance.set(Calendar.YEAR,year)
+                        calenderInstance.set(Calendar.MONTH, month)
+                        calenderInstance.set(Calendar.DAY_OF_MONTH, day)
+                        updateLabel(calenderInstance, addingChildBinding)
+            }
+
+          addingChildBinding.etDOB.setOnClickListener {
+              activity?.let { it1 ->
+                  DatePickerDialog(it1, datePickerOnDataSetListener, calenderInstance
+                          .get(Calendar.YEAR), calenderInstance.get(Calendar.MONTH),
+                          calenderInstance.get(Calendar.DAY_OF_MONTH)).show()
+              }
+            }*/
+
 
 //            01234567890
 //            03/77/2323
@@ -63,6 +81,13 @@ class AddingChildFragment : Fragment() {
         }
         return root
     }
+
+    /*private fun updateLabel(calenderInstance: Calendar, addingChildBinding: FragmentAddingChildBinding) {
+        val myFormat: String = "dd-MMM-yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.UK)
+        addingChildBinding.etDOB.setText(sdf.format(calenderInstance.time))
+
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,7 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -15,18 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        multiDexEnabled true
-
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        android.defaultConfig.vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
     }
-
-    buildFeatures{
-        viewBinding true
-    }
-
 
     buildTypes {
         release {
@@ -43,42 +31,9 @@ android {
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
-//    implementation 'androidx.appcompat:design:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-auth:20.0.3'
-    implementation 'com.google.firebase:firebase-storage:19.2.1'
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    implementation 'com.android.support:multidex:1.0.3'
-
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
-
-//    timber dependency
-    implementation 'com.jakewharton.timber:timber:4.7.1'
-//    Picasso dependency
-    implementation 'com.squareup.picasso:picasso:2.71828'
-//    firebase dependencies
-    implementation platform('com.google.firebase:firebase-bom:26.6.0')
-//    java
-    implementation 'com.google.firebase:firebase-analytics'
-//    kotlin
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-database'
-    implementation 'com.google.firebase:firebase-database-ktx'
-    //multidex Library
-    implementation 'com.android.support:multidex:1.0.3'
-
-
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-
 }
