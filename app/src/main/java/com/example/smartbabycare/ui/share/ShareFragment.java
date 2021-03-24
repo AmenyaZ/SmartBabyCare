@@ -57,7 +57,6 @@ public class ShareFragment extends AppCompatActivity {
     private ImageView twitter;
     private ImageView whatsapp;
     private  ImageView mail;
-
     private ProgressBar progressBar;
 
     @Override
