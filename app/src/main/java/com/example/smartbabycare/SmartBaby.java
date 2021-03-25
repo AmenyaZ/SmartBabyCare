@@ -1,17 +1,22 @@
 package com.example.smartbabycare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
 //import com.example.smartbabycare.addingChild.AddingChildFragment;
+import com.example.smartbabycare.ui.home.HomeFragment;
 import com.example.smartbabycare.viewModel.sharedViewModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -41,6 +46,21 @@ public class SmartBaby extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+//        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if(item.getItemId() == R.id.nav_home){
+//
+//                    Intent intent = new Intent(SmartBaby.this, HomeFragment.class);
+//                    finish();
+//                    return;
+//
+//                }
+//                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout );
+//                DrawerLayout.closeDrawer(GravityCompat.START);
+//                return true;
+//            }
+//        });
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
