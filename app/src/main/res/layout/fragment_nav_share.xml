@@ -18,84 +18,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradientbackground"
+    android:background="@drawable/ic_white"
     tools:context=".ui.share.ShareFragment">
-         <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="405dp">
+
+        <LinearLayout
+            android:background="#3B4D5E"
             android:layout_width="match_parent"
-            android:layout_height="405dp">
+            android:layout_height="350dp"
 
-            <LinearLayout
-                android:background="#3B4D5E"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-
-                android:orientation="vertical">
+            android:orientation="vertical">
 
 
-                <!--            <circleimageview.CircleImageView-->
-                <!--                android:id="@+id/iv_CustomerProfile"-->
-                <!--                android:layout_marginTop="20dp"-->
-                <!--                android:layout_gravity="center_horizontal"-->
-                <!--                android:layout_width="150dp"-->
-                <!--                android:layout_height="150dp"-->
-                <!--                app:civ_border_width="2dp"-->
-                <!--                app:civ_border_color="#FF000000"-->
-                <!--                android:src="@drawable/ic_baby"-->
-                <!--                tools:ignore="MissingClass" />-->
+            <!--            <circleimageview.CircleImageView-->
+            <!--                android:id="@+id/iv_CustomerProfile"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:layout_gravity="center_horizontal"-->
+            <!--                android:layout_width="150dp"-->
+            <!--                android:layout_height="150dp"-->
+            <!--                app:civ_border_width="2dp"-->
+            <!--                app:civ_border_color="#FF000000"-->
+            <!--                android:src="@drawable/ic_baby"-->
+            <!--                tools:ignore="MissingClass" />-->
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:text="Smart BAby Care"
-                    android:textColor="#0288D1"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Smart BAby Care"
+                android:textColor="#0288D1"
+                android:textSize="21sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_baby" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_baby" />
+        </LinearLayout>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="45dp"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-                    <ImageView
-                        android:id="@+id/img_facebook"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/ic_facecook" />
-                    <ImageView
-                        android:id="@+id/img_twitter"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/ic_twitter" />
+        <ImageView
+            android:id="@+id/img_facebook"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_facecook" />
+        <ImageView
+            android:id="@+id/img_twitter"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_twitter" />
 
-                    <ImageView
-                        android:id="@+id/img_google"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/ic_google" />
-                </LinearLayout>
+        <ImageView
+            android:id="@+id/img_google"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_google" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="360dp"
@@ -133,16 +133,16 @@
     </LinearLayout>
 
     <ProgressBar
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/tv_driver"
-            android:id="@+id/simpleProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tv_driver"
+        android:id="@+id/simpleProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
 
-            android:visibility="invisible"
-            android:layout_centerHorizontal="true"/>
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"/>
 </LinearLayout>
 
 
