@@ -65,6 +65,8 @@ class AddingChildFragment : Fragment() {
 
 //            01234567890
 //            03/77/2323
+
+
             var regYear: String = dob.substring(6, 10)
             var regMonth: String = dob.substring(3, 5)
             var regDate: String = dob.substring(0, 2)
@@ -72,6 +74,9 @@ class AddingChildFragment : Fragment() {
             var ageYear: Int = year - (regYear.toInt())
             var ageMonth: Int = month - (regMonth.toInt())
             var ageDay: Int = day - (regDate.toInt())
+            if(ageYear > 5){
+                addingChildBinding.etDOB.setError("Child's Age is more than 5 Year thus Ineligible for The Vaccines")
+            }
 
             reference = Firebase.database.getReference("ChildRecords").child(phoneNo)
             var key : String? = reference.push().key
