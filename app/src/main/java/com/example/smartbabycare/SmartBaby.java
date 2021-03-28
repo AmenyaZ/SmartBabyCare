@@ -1,11 +1,13 @@
 package com.example.smartbabycare;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 //import com.example.smartbabycare.addingChild.AddingChildFragment;
 import com.example.smartbabycare.ui.about.AboutFragment;
@@ -18,9 +20,12 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -38,6 +43,7 @@ public class SmartBaby extends AppCompatActivity  {
     private AppBarConfiguration mAppBarConfiguration;
     private sharedViewModel mainModel;
     NavigationView navigationView;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +57,14 @@ public class SmartBaby extends AppCompatActivity  {
         mainModel.setSharedFab(fab);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
+
     //    NavigationView navigationView = findViewById(R.id.nav_view);
 
 
         navigationView = findViewById(R.id.nav_view);
+        setupDrawerContent(navigationView);
+
 
 
 //         Passing each menu ID as a set of Ids because each
@@ -74,6 +84,48 @@ public class SmartBaby extends AppCompatActivity  {
         });
     }
 
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectDrawerItem(item);
+                return false;
+            }
+        });
+    }
+
+    private void selectDrawerItem(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_exit:
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(SmartBaby.this)
+
+                        .setIcon(R.drawable.ic_baseline_warning_24)
+                        .setTitle("Exit TBoda?")
+                        .setMessage("Are you sure you want to Exit")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseAuth.getInstance().signOut();
+                                startActivity(new Intent(getApplicationContext(), SmartBabyPhoneLogin.class));
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getApplicationContext(),"You are still Logged in",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                alertDialog.show();
+
+
+
+
+                break;
+            default:
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -88,45 +140,68 @@ public class SmartBaby extends AppCompatActivity  {
                 || super.onSupportNavigateUp();
     }
 
+
+
 //
 //    @Override
 //    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //
-//
-//        if(item.getItemId() == R.id.nav_home) {
-//
-//            Intent intent = new Intent(SmartBaby.this, HomeFragment.class);
-//            finish();
-//        }
-//        if(item.getItemId() == R.id.nav_profile) {
-//
-//            Intent intent = new Intent(SmartBaby.this, ProfileFragment.class);
-//            finish();
-//        }
-//        if(item.getItemId() == R.id.nav_share) {
-//
-//            Intent intent = new Intent(SmartBaby.this, ShareFragment.class);
-//            finish();
-//        }
-//        if(item.getItemId() == R.id.nav_feedback) {
-//
-//            Intent intent = new Intent(SmartBaby.this, AboutFragment.class);
-//            finish();
-//        }
-//        if(item.getItemId() == R.id.action_settings) {
-//
-//            Intent intent = new Intent(SmartBaby.this, SettingsFragment.class);
-//            finish();
-//        }
+////
+////        if(item.getItemId() == R.id.nav_home) {
+////
+////            Intent intent = new Intent(SmartBaby.this, HomeFragment.class);
+////            finish();
+////        }
+////        if(item.getItemId() == R.id.nav_profile) {
+////
+////            Intent intent = new Intent(SmartBaby.this, ProfileFragment.class);
+////            finish();
+////        }
+////        if(item.getItemId() == R.id.nav_share) {
+////
+////            Intent intent = new Intent(SmartBaby.this, ShareFragment.class);
+////            finish();
+////        }
+////        if(item.getItemId() == R.id.nav_feedback) {
+////
+////            Intent intent = new Intent(SmartBaby.this, AboutFragment.class);
+////            finish();
+////        }
+////        if(item.getItemId() == R.id.action_settings) {
+////
+////            Intent intent = new Intent(SmartBaby.this, SettingsFragment.class);
+////            finish();
+////        }
 //        if(item.getItemId() == R.id.nav_exit) {
 //
-//            Intent intent = new Intent(SmartBaby.this, SmartBabyPhoneLogin.class);
-//            finish();
+//            AlertDialog.Builder alertDialog = new AlertDialog.Builder(SmartBaby.this)
+//
+//                    .setIcon(R.drawable.ic_baseline_warning_24)
+//                    .setTitle("Exit TBoda?")
+//                    .setMessage("Are you sure you want to Exit")
+//                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            FirebaseAuth.getInstance().signOut();
+//                            Intent intent = new Intent(SmartBaby.this, SmartBabyPhoneLogin.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    })
+//                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            Toast.makeText(getApplicationContext(),"You are still Logged in",Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+//            alertDialog.show();
+//
+//
 //        }
-//
-//
-//
-//        return true;
-//    }
+////
+////
+////
+//       return true;
+//   }
 }
 
