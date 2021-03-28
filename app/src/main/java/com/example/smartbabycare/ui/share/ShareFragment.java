@@ -24,6 +24,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartbabycare.R;
+import com.example.smartbabycare.ui.about.AboutViewModel;
 import com.example.smartbabycare.ui.home.HomeFragment;
 
 import java.util.Objects;
@@ -38,23 +39,21 @@ public class ShareFragment extends Fragment {
     private ImageView google;
     private ImageView linkedin;
     private ImageView whatsapp;
-    private  ImageView mail;
+    private ImageView mail;
     private ProgressBar progressBar;
 
 
     private ShareViewModel mViewModel;
 
+    public static ShareFragment newInstance(){
 
-
-    public static ShareFragment newInstance() {
         return new ShareFragment();
-
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
 
         return inflater.inflate(R.layout.fragment_nav_share, container, false);
 
@@ -70,21 +69,11 @@ public class ShareFragment extends Fragment {
 
 }
 
-
-//public class ShareFragment extends AppCompatActivity {
-//
-//    private ImageView facebook;
-//    private ImageView twitter;
-//    private ImageView google;
-//    private ImageView linkedin;
-//    private ImageView whatsapp;
-//    private  ImageView mail;
-//    private ProgressBar progressBar;
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_nav_about);
+//        setContentView(R.layout.fragment_nav_share);
 //
 //        facebook = findViewById(R.id.img_facebook);
 //        twitter = findViewById(R.id.img_twitter);
@@ -138,8 +127,29 @@ public class ShareFragment extends Fragment {
 //            }
 //        });
 //
+//    }
+//}
+
+//    public static ShareFragment newInstance() {
+//        return new ShareFragment();
+//
+//    }
+//
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+//                             @Nullable Bundle savedInstanceState) {
 //
 //
+//        return inflater.inflate(R.layout.fragment_nav_share, container, false);
+//
+//
+//    }
+//
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        mViewModel = new ViewModelProvider(this).get(ShareViewModel.class);
+//        // TODO: Use the ViewModel
 //    }
 //
 //}

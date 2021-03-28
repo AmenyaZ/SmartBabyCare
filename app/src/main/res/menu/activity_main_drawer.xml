@@ -36,22 +36,23 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
             android:title="Profile" />
+
+<!--        <item-->
+<!--            android:id="@+id/nav_feedback"-->
+<!--            android:icon="@drawable/ic_feedback"-->
+<!--            android:title="Feedback" />-->
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_about"
+            android:title="About" />
+<!--        <item-->
+<!--            android:id="@+id/nav_about"-->
+<!--            android:icon="@drawable/ic_about"-->
+<!--            android:title="About The App" />-->
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_share"
             android:title="Share" />
-        <item
-            android:id="@+id/nav_feedback"
-            android:icon="@drawable/ic_feedback"
-            android:title="Feedback" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings"
-            android:title="Settings" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_about"
-            android:title="About The App" />
         <item
             android:id="@+id/nav_exit"
             android:icon="@drawable/ic_exit"
