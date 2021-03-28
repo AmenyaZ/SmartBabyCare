@@ -2,6 +2,7 @@ package com.example.smartbabycare;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -70,7 +72,7 @@ public class SmartBaby extends AppCompatActivity  {
 //         Passing each menu ID as a set of Ids because each
 //         menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_profile, R.id.nav_share, R.id.nav_feedback, R.id.nav_settings, R.id.nav_about, R.id.nav_exit)
+                R.id.nav_home, R.id.nav_profile, /*R.id.nav_share, R.id.nav_feedback, R.id.nav_settings,*/ R.id.nav_about, R.id.nav_exit)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -140,9 +142,24 @@ public class SmartBaby extends AppCompatActivity  {
                 || super.onSupportNavigateUp();
     }
 
+    /*@Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }*/
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
-
-//
+    //
 //    @Override
 //    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //
