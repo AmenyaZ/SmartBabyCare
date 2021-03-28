@@ -1,6 +1,5 @@
 package com.example.smartbabycare.addingChild
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.smartbabycare.R
 import com.example.smartbabycare.databinding.FragmentAddingChildBinding
 import com.example.smartbabycare.model.Child
 import com.example.smartbabycare.viewModel.sharedViewModel
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -78,7 +75,7 @@ class AddingChildFragment : Fragment() {
 
             reference = Firebase.database.getReference("ChildRecords").child(phoneNo)
             var key : String? = reference.push().key
-            var child: Child = Child(name, ageYear.toString(), gender)
+            var child: Child = Child(name, ageYear.toString(), gender,dob)
             reference.child(key!!).setValue(child)
 
         }

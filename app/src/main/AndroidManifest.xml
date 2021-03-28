@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartBabyCare">
         <activity android:name=".ParentDetailsActivity"></activity>
+        <activity android:name=".ScheduleActivity"/>
         <activity android:name=".ParentsDetailsActivity" />
         <activity android:name=".VerifyActivity" />
         <activity android:name=".SmartBabyPhoneLogin">
