@@ -1,12 +1,12 @@
 package com.example.smartbabycare.addingChild
 
-import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartbabycare.R
 import com.example.smartbabycare.databinding.FragmentAddingChildBinding
@@ -16,7 +16,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -35,7 +34,10 @@ class AddingChildFragment : Fragment() {
         childModel.sharedFab.visibility = View.INVISIBLE
 
 //        childDb = FirebaseDatabase.getInstance()
-        reference = Firebase.database.getReference("ChildRecords")
+
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("Preferences", 0)
+        val phoneNo : String? = sharedPreferences.getString("phone", null)
+        reference = Firebase.database.getReference("ChildRecords").child(phoneNo!!)
         addingChildBinding.registerChildBtn.setOnClickListener {
             val name : String = addingChildBinding.etName.text.toString().trim()
             val dob : String = addingChildBinding.etDOB.text.toString().trim()
@@ -74,7 +76,7 @@ class AddingChildFragment : Fragment() {
             var ageMonth: Int = month - (regMonth.toInt())
             var ageDay: Int = day - (regDate.toInt())
 
-            reference = Firebase.database.getReference("ChildRecords")
+            reference = Firebase.database.getReference("ChildRecords").child(phoneNo)
             var key : String? = reference.push().key
             var child: Child = Child(name, ageYear.toString(), gender)
             reference.child(key!!).setValue(child)

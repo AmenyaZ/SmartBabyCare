@@ -1,5 +1,6 @@
 package com.example.smartbabycare.ui.home
 
+import android.content.SharedPreferences
 import com.example.smartbabycare.ui.home.HomeViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartbabycare.adapter.ChildAdapter
@@ -38,7 +39,9 @@ class HomeFragment : Fragment() {
         layoutManager = LinearLayoutManager(requireContext())
         homeBinding.childrenRecyclerView.layoutManager = layoutManager
         homeBinding.childrenRecyclerView.setHasFixedSize(true)
-        childrenRef = FirebaseDatabase.getInstance().getReference("ChildRecords")
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("Preferences", 0)
+        val phoneNo : String? = sharedPreferences.getString("phone", null)
+        childrenRef = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo!!)
         childrenRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 children.clear()
