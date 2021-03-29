@@ -1,5 +1,6 @@
 package com.example.smartbabycare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -15,8 +16,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ScheduleActivity extends AppCompatActivity {
     private CheckBox bcg,hep1, opv0, dtwp, hib1,hep2,opv1;
@@ -66,7 +70,8 @@ public class ScheduleActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  phoneNo = sharedPreferences.getString("phone", null) ;
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo);
+        String key = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo).push().getKey();
+        mDatabase = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo).child(key);
         getChildsDate();
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +107,21 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
     }
-
+ String mDob;
     private void getChildsDate() {
+
+        mDatabase.orderByChild("childDob").equalTo(mDob).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mDob= snapshot.child("childDob").getValue().toString();
+
+                date_given3.setText(mDob);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
