@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.smartbabycare.SmartBaby
 import com.example.smartbabycare.databinding.FragmentAddingChildBinding
 import com.example.smartbabycare.model.Child
-import com.example.smartbabycare.ui.home.HomeFragment
 import com.example.smartbabycare.viewModel.sharedViewModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -32,62 +32,67 @@ class AddingChildFragment : Fragment() {
 
         childModel.sharedFab.visibility = View.INVISIBLE
 
-//        childDb = FirebaseDatabase.getInstance()
+
+
+
 
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("Preferences", 0)
         val phoneNo : String? = sharedPreferences.getString("phone", null)
         reference = Firebase.database.getReference("ChildRecords").child(phoneNo!!)
         addingChildBinding.registerChildBtn.setOnClickListener {
-
             val name : String = addingChildBinding.etName.text.toString().trim()
             val dob : String = addingChildBinding.etDOB.text.toString().trim()
             val  gender: String = addingChildBinding.etGender.text.toString().trim()
             val pob : String = addingChildBinding.etPOB.text.toString().trim()
 
-           if(addingChildBinding.etName == null){
-               addingChildBinding.etName.setError("Name is Required")
+            if(name.trim().isEmpty()){
+                addingChildBinding.etName.error = "Name is Required"
            }
-            else if(addingChildBinding.etDOB == null){
-                addingChildBinding.etDOB.setError("Date of Birth is Required")
+            else if(dob.trim().isEmpty()){
+                addingChildBinding.etDOB.error = "Date of Birth is Required"
             }
 
-            else if(addingChildBinding.etGender == null){
-                addingChildBinding.etGender.setError("Gander is Required")
+            else if(gender.trim().isEmpty()){
+                addingChildBinding.etGender.error = "Gander is Required"
             }
 
-            else if(addingChildBinding.etPOB == null){
-                addingChildBinding.etPOB.setError("Place Of Birth is Required")
+            else if(pob.trim().isEmpty()){
+                addingChildBinding.etPOB.error = "Place Of Birth is Required"
             }
             else{
-               //            TimeUtils.
-
-               val calenderInstance = Calendar.getInstance()
-               val year = calenderInstance.get(Calendar.YEAR)
-               val month = calenderInstance.get(Calendar.MONTH)
-               val day = calenderInstance.get(Calendar.DAY_OF_MONTH)
-
-
+                //            TimeUtils.
+                val calenderInstance = Calendar.getInstance()
+                val year = calenderInstance.get(Calendar.YEAR)
+                val month = calenderInstance.get(Calendar.MONTH)
+                val day = calenderInstance.get(Calendar.DAY_OF_MONTH)
 
 //            01234567890
 //            03/77/2323
+                var regYear: String = dob.substring(6, 10)
+                var regMonth: String = dob.substring(3, 5)
+                var regDate: String = dob.substring(0, 2)
+
+                var ageYear: Int = year - (regYear.toInt())
+                var ageMonth: Int = month - (regMonth.toInt())
+                var ageDay: Int = day - (regDate.toInt())
+
+                if( ageYear > 5){
+                    addingChildBinding.etDOB.error = "Child's Age is grater than 5 Years"
+                }
 
 
-               var regYear: String = dob.substring(6, 10)
-               var regMonth: String = dob.substring(3, 5)
-               var regDate: String = dob.substring(0, 2)
+                else {
+//        childDb = FirebaseDatabase.getInstance()
+                    /*val user = FirebaseAuth.getInstance().currentUser
+                    val userid = user.uid*/
+                    reference = Firebase.database.getReference("ChildRecords").child(phoneNo)
+                    var key: String? = reference.push().key
+                    var child: Child = Child(name, ageYear.toString(), gender, dob)
+                    reference.child(key!!).setValue(child)
+                    context?.startActivity(Intent(context, SmartBaby::class.java))
 
-               var ageYear: Int = year - (regYear.toInt())
-               var ageMonth: Int = month - (regMonth.toInt())
-               var ageDay: Int = day - (regDate.toInt())
 
-
-               reference = Firebase.database.getReference("ChildRecords").child(phoneNo)
-               var key : String? = reference.push().key
-               var child: Child = Child(name, ageYear.toString(), gender,dob)
-               reference.child(key!!).setValue(child)
-
-               context?.startActivity(Intent(context,HomeFragment::class.java))
-
+                }
            }
 
 
