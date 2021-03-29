@@ -1,26 +1,21 @@
 package com.example.smartbabycare.ui.home
 
-import com.example.smartbabycare.ui.home.HomeViewModel
-import androidx.recyclerview.widget.RecyclerView
-import com.example.smartbabycare.adapter.ChildAdapter
-import com.example.smartbabycare.model.Child
-import com.google.firebase.database.DatabaseReference
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.smartbabycare.adapter.ChildAdapter
 import com.example.smartbabycare.databinding.FragmentHomeBinding
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.DataSnapshot
-import com.example.smartbabycare.ui.home.HomeFragment
-import com.google.firebase.database.DatabaseError
+import com.example.smartbabycare.model.Child
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
-import java.util.ArrayList
+import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var homeBinding: FragmentHomeBinding
@@ -38,7 +33,9 @@ class HomeFragment : Fragment() {
         layoutManager = LinearLayoutManager(requireContext())
         homeBinding.childrenRecyclerView.layoutManager = layoutManager
         homeBinding.childrenRecyclerView.setHasFixedSize(true)
-        childrenRef = FirebaseDatabase.getInstance().getReference("ChildRecords")
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("Preferences", 0)
+        val phoneNo : String? = sharedPreferences.getString("phone", null)
+        childrenRef = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo!!)
         childrenRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 children.clear()
@@ -47,7 +44,7 @@ class HomeFragment : Fragment() {
 
                     children.add(retrievedChild!!)
                 }
-                adapter = ChildAdapter(children)
+                adapter = ChildAdapter(children, requireActivity())
                 homeBinding.childrenRecyclerView.adapter = adapter
             }
 

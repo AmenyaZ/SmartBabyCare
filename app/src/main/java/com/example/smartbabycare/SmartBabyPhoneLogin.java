@@ -6,6 +6,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -64,6 +65,13 @@ public class SmartBabyPhoneLogin extends AppCompatActivity {
                     }
 
                     String phoneNumber = "+" + code + number;
+
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("phone", phoneNumber);
+                    // commit changes
+                    editor.apply();
+                    editor.commit();
 
 
 

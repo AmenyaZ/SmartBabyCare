@@ -15,11 +15,11 @@
             app:destination="@id/addingChildFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.smartbabycare.ui.gallery.GalleryFragment"
-        android:label= "@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_gallery"-->
+<!--        android:name="com.example.smartbabycare.ui.gallery.GalleryFragment"-->
+<!--        android:label= "@string/menu_gallery"-->
+<!--        tools:layout="@layout/fragment_gallery" />-->
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -32,22 +32,26 @@
         android:label="fragment_adding_child"
         tools:layout="@layout/fragment_adding_child" />
     <fragment
-        android:id="@+id/nav_share2"
+        android:id="@+id/nav_share"
         android:name="com.example.smartbabycare.ui.share.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_nav_share" />
     <fragment
-        android:id="@+id/settingsFragment"
+        android:id="@+id/nav_settings"
         android:name="com.example.smartbabycare.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_nav_settings" />
+        tools:layout="@layout/fragment_nav_settings" >
+    <action
+        android:id="@+id/action_nav_home_to_addingChildFragment"
+        app:destination="@id/addingChildFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/aboutFragment"
+        android:id="@+id/nav_about"
         android:name="com.example.smartbabycare.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_nav_about" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/nav_profile"
         android:name="com.example.smartbabycare.ui.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_nav_profile" />

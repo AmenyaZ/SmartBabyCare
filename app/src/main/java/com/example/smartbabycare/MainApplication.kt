@@ -1,7 +1,7 @@
 package com.example.smartbabycare
 
 import android.app.Application
-import androidx.viewbinding.BuildConfig
+//import androidx.viewbinding.BuildConfig
 import timber.log.Timber
 
 class MainApplication: Application() {
