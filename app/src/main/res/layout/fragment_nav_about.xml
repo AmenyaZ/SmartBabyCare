@@ -154,6 +154,7 @@
                 app:srcCompat="@drawable/ic_baseline_email_24"
                 tools:ignore="VectorDrawableCompat" />
             <TextView
+                android:id="@+id/cont_email"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
@@ -174,7 +175,7 @@
                 tools:ignore="VectorDrawableCompat" />
             <TextView
                 android:textStyle="bold"
-
+                android:id="@+id/phone"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
