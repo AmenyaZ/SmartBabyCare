@@ -1,23 +1,53 @@
 package com.example.smartbabycare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ScheduleActivity extends AppCompatActivity {
     private CheckBox bcg,hep1, opv0, dtwp, hib1,hep2,opv1;
     private EditText datebcg, datehep1,dateopv0,datedtwp,datehib1,datehep2,dateopv1;
     private Button save;
+    TextView date_given2, date_given3;
 
+    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+    String userid=user.getUid();
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+        datebcg =  findViewById(R.id.datebcg);
+        datehep1 =  findViewById(R.id.datehep1);
+        dateopv0 =  findViewById(R.id.dateopv0);
+        datedtwp =  findViewById(R.id.datedtwp);
+        datedtwp =  findViewById(R.id.datedtwp);
+        datehib1 =  findViewById(R.id.datehib1);
+        datehep2 =  findViewById(R.id.datehep2);
+        dateopv1 =  findViewById(R.id.dateopv1);
+
+        date_given2 =  findViewById(R.id.date_given2);
+        date_given3 =  findViewById(R.id.date_given3);
+
+
 
         bcg = (CheckBox) findViewById(R.id.bcg);
         hep1 = (CheckBox) findViewById(R.id.hep1);
@@ -27,6 +57,22 @@ public class ScheduleActivity extends AppCompatActivity {
         hep2 = (CheckBox) findViewById(R.id.hep2);
         opv1 = (CheckBox) findViewById(R.id.opv1);
         save = (Button) findViewById(R.id.save);
+
+
+       /* val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("Preferences", 0)
+        val phoneNo : String? = sharedPreferences.getString("phone", null)
+        reference = Firebase.database.getReference("ChildRecords").child(phoneNo!!)  */
+
+        /*SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("phone", phoneNo);*/
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String  phoneNo = sharedPreferences.getString("phone", null) ;
+
+        String key = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo).push().getKey();
+        mDatabase = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo).child(key);
+        getChildsDate();
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +103,23 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
 
+
+            }
+        });
+    }
+ String mDob;
+    private void getChildsDate() {
+
+        mDatabase.orderByChild("childDob").equalTo(mDob).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mDob= snapshot.child("childDob").getValue().toString();
+
+                date_given3.setText(mDob);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
