@@ -1,5 +1,6 @@
 package com.example.smartbabycare.addingChild
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartbabycare.databinding.FragmentAddingChildBinding
 import com.example.smartbabycare.model.Child
+import com.example.smartbabycare.ui.home.HomeFragment
 import com.example.smartbabycare.viewModel.sharedViewModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -36,52 +38,60 @@ class AddingChildFragment : Fragment() {
         val phoneNo : String? = sharedPreferences.getString("phone", null)
         reference = Firebase.database.getReference("ChildRecords").child(phoneNo!!)
         addingChildBinding.registerChildBtn.setOnClickListener {
+
             val name : String = addingChildBinding.etName.text.toString().trim()
             val dob : String = addingChildBinding.etDOB.text.toString().trim()
             val  gender: String = addingChildBinding.etGender.text.toString().trim()
             val pob : String = addingChildBinding.etPOB.text.toString().trim()
-//            TimeUtils.
 
-            val calenderInstance = Calendar.getInstance()
-            val year = calenderInstance.get(Calendar.YEAR)
-            val month = calenderInstance.get(Calendar.MONTH)
-            val day = calenderInstance.get(Calendar.DAY_OF_MONTH)
-            /*val datePickerOnDataSetListener =
-                    DatePickerDialog.OnDateSetListener{ datePicker, i, i2, i3 ->
-                calenderInstance.set(Calendar.YEAR,year)
-                        calenderInstance.set(Calendar.MONTH, month)
-                        calenderInstance.set(Calendar.DAY_OF_MONTH, day)
-                        updateLabel(calenderInstance, addingChildBinding)
+           if(addingChildBinding.etName == null){
+               addingChildBinding.etName.setError("Name is Required")
+           }
+            else if(addingChildBinding.etDOB == null){
+                addingChildBinding.etDOB.setError("Date of Birth is Required")
             }
 
-          addingChildBinding.etDOB.setOnClickListener {
-              activity?.let { it1 ->
-                  DatePickerDialog(it1, datePickerOnDataSetListener, calenderInstance
-                          .get(Calendar.YEAR), calenderInstance.get(Calendar.MONTH),
-                          calenderInstance.get(Calendar.DAY_OF_MONTH)).show()
-              }
-            }*/
+            else if(addingChildBinding.etGender == null){
+                addingChildBinding.etGender.setError("Gander is Required")
+            }
+
+            else if(addingChildBinding.etPOB == null){
+                addingChildBinding.etPOB.setError("Place Of Birth is Required")
+            }
+            else{
+               //            TimeUtils.
+
+               val calenderInstance = Calendar.getInstance()
+               val year = calenderInstance.get(Calendar.YEAR)
+               val month = calenderInstance.get(Calendar.MONTH)
+               val day = calenderInstance.get(Calendar.DAY_OF_MONTH)
+
 
 
 //            01234567890
 //            03/77/2323
 
 
-            var regYear: String = dob.substring(6, 10)
-            var regMonth: String = dob.substring(3, 5)
-            var regDate: String = dob.substring(0, 2)
+               var regYear: String = dob.substring(6, 10)
+               var regMonth: String = dob.substring(3, 5)
+               var regDate: String = dob.substring(0, 2)
 
-            var ageYear: Int = year - (regYear.toInt())
-            var ageMonth: Int = month - (regMonth.toInt())
-            var ageDay: Int = day - (regDate.toInt())
-            if(ageYear > 5){
-                addingChildBinding.etDOB.setError("Child's Age is more than 5 Year thus Ineligible for The Vaccines")
-            }
+               var ageYear: Int = year - (regYear.toInt())
+               var ageMonth: Int = month - (regMonth.toInt())
+               var ageDay: Int = day - (regDate.toInt())
 
-            reference = Firebase.database.getReference("ChildRecords").child(phoneNo)
-            var key : String? = reference.push().key
-            var child: Child = Child(name, ageYear.toString(), gender,dob)
-            reference.child(key!!).setValue(child)
+
+               reference = Firebase.database.getReference("ChildRecords").child(phoneNo)
+               var key : String? = reference.push().key
+               var child: Child = Child(name, ageYear.toString(), gender,dob)
+               reference.child(key!!).setValue(child)
+
+               context?.startActivity(Intent(context,HomeFragment::class.java))
+
+           }
+
+
+
 
         }
         return root

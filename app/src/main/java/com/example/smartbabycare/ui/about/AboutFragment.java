@@ -1,7 +1,6 @@
 package com.example.smartbabycare.ui.about;
 
 import androidx.lifecycle.ViewModelProvider;
-<<<<<<< HEAD
 
 import android.content.Intent;
 import android.os.Bundle;

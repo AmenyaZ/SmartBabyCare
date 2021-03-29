@@ -18,6 +18,16 @@ public class ScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+        datebcg =  findViewById(R.id.datebcg);
+        datehep1 =  findViewById(R.id.datehep1);
+        dateopv0 =  findViewById(R.id.dateopv0);
+        datedtwp =  findViewById(R.id.datedtwp);
+        datedtwp =  findViewById(R.id.datedtwp);
+        datehib1 =  findViewById(R.id.datehib1);
+        datehep2 =  findViewById(R.id.datehep2);
+        dateopv1 =  findViewById(R.id.dateopv1);
+
+
 
         bcg = (CheckBox) findViewById(R.id.bcg);
         hep1 = (CheckBox) findViewById(R.id.hep1);
