@@ -59,6 +59,7 @@ public class SmartBaby extends AppCompatActivity  {
     DatabaseReference rootDatabase;
     String token;
 
+    private static final String TAG = "SmartBaby";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +92,7 @@ public class SmartBaby extends AppCompatActivity  {
                         FirebaseMessaging.getInstance().subscribeToTopic("All");
                         rootDatabase.child("token").setValue(token);
 
+                        Log.d(TAG,"Token is :"+ token);
                         Toast.makeText(SmartBaby.this, token, Toast.LENGTH_LONG).show();
 
                     }
