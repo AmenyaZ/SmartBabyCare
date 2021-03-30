@@ -228,26 +228,9 @@ public class ScheduleActivity extends AppCompatActivity {
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleActivity.this, R.style.Theme_SmartBabyCare);
-                View view1 = LayoutInflater.from(ScheduleActivity.this).inflate(R.layout.success_dialog1, null);
-                TextView textView = view1.findViewById(R.id.tvSuccess);
-                ImageView imageButton = view1.findViewById(R.id.ivSuccessCheck);
-                textView.setText("Vaccine Successfully Scheduled!!!");
-                Button button = view1.findViewById(R.id.buttonSave);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        saveChildsVaccinationDatesChanges();
-                        startActivity(new Intent(getApplicationContext(), SmartBaby.class));
-                        finish();
-                    }
-                });
 
+                saveChildsVaccinationDatesChanges();
 
-                imageButton.setImageResource(R.drawable.ic_baseline_check_circle_24);
-
-                builder.setView(view1);
-                builder.show();
             }
         });
 
@@ -309,6 +292,27 @@ public class ScheduleActivity extends AppCompatActivity {
     private void saveChildsVaccinationDatesChanges() {
 
         if (isDatebcg() || isDatehep1() || isDateopv0() || isDatedtwp() || isDatehib1() || isDatehep2() || isDateopv1()){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleActivity.this, R.style.Theme_SmartBabyCare);
+            View view1 = LayoutInflater.from(ScheduleActivity.this).inflate(R.layout.success_dialog1, null);
+            TextView textView = view1.findViewById(R.id.tvSuccess);
+            ImageView imageButton = view1.findViewById(R.id.ivSuccessCheck);
+            textView.setText("Vaccine Successfully Scheduled!!!");
+            Button button = view1.findViewById(R.id.buttonSave);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    startActivity(new Intent(getApplicationContext(), SmartBaby.class));
+                    finish();
+                }
+            });
+
+
+            imageButton.setImageResource(R.drawable.ic_baseline_check_circle_24);
+
+            builder.setView(view1);
+            builder.show();
             
         }
 
