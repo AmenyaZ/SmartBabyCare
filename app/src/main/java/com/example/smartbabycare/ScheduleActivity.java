@@ -70,8 +70,10 @@ public class ScheduleActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  phoneNo = sharedPreferences.getString("phone", null) ;
 
-        String key = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo).push().getKey();
-        mDatabase = FirebaseDatabase.getInstance().getReference("ChildRecords").child(phoneNo).child(key);
+
+        //String mKey = mDatabase.push().getKey();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Dates");
+
         getChildsDate();
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -100,22 +102,20 @@ public class ScheduleActivity extends AppCompatActivity {
                         .append(opv1.isChecked());
 
                 Toast.makeText(ScheduleActivity.this, OUTPUT.toString(), Toast.LENGTH_LONG).show();
-
-
-
-
-            }
+                }
         });
     }
- String mDob;
+ String mDobs,ScheduleDate;
     private void getChildsDate() {
 
-        mDatabase.orderByChild("childDob").equalTo(mDob).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.orderByChild("DateOfBirth1").equalTo(mDobs).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                mDob= snapshot.child("childDob").getValue().toString();
+                mDobs= snapshot.child("DateOfBirth1").getValue().toString();
+                ScheduleDate = snapshot.child("ScheduleDate1").getValue().toString();
 
-                date_given3.setText(mDob);
+                date_given3.setText("The Ideal Date is :"+" "+mDobs);
+                date_given2.setText("The Ideal Date is :"+" "+ScheduleDate);
             }
 
             @Override

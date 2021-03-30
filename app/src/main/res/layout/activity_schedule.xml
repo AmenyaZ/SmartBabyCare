@@ -90,7 +90,7 @@
     <TextView
         android:id="@+id/date_given3"
         android:layout_width="wrap_content"
-        android:layout_height="6dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="9dp"
         android:text="Ideal date: 21/08/2019"
