@@ -253,11 +253,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
     }
 
-    private void saveChildsVaccinationDatesChanges() {
 
-        if ()
-
-    }
 
     /*private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
@@ -276,15 +272,15 @@ public class ScheduleActivity extends AppCompatActivity {
                 ScheduleDate = snapshot.child("ScheduleDate1").getValue().toString();
 
                 //Tobe administered at birth
-                mDatebcg = snapshot.child("DateOfBirth1").getValue().toString();
-                mDatehep1 = snapshot.child("DateOfBirth1").getValue().toString();
-                mDateopv0 = snapshot.child("DateOfBirth1").getValue().toString();
+                mDatebcg = snapshot.child("datebcg").getValue().toString();
+                mDatehep1 = snapshot.child("datehep1").getValue().toString();
+                mDateopv0 = snapshot.child("dateopv0").getValue().toString();
 
                 //To be givien After 6 Weeks
-                mdatedtwp = snapshot.child("ScheduleDate1").getValue().toString();
-                mdatehib1 = snapshot.child("ScheduleDate1").getValue().toString();
-                mdatehep2 = snapshot.child("ScheduleDate1").getValue().toString();
-                mdateopv1 = snapshot.child("ScheduleDate1").getValue().toString();
+                mdatedtwp = snapshot.child("datedtwp").getValue().toString();
+                mdatehib1 = snapshot.child("datehib1").getValue().toString();
+                mdatehep2 = snapshot.child("datehep2").getValue().toString();
+                mdateopv1 = snapshot.child("dateopv1").getValue().toString();
 
                 //DefaultDate
                 date_given3.setText("The Ideal Date is :"+" "+mDobs);
@@ -309,5 +305,103 @@ public class ScheduleActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void saveChildsVaccinationDatesChanges() {
+
+        if (isDatebcg() || isDatehep1() || isDateopv0() || isDatedtwp() || isDatehib1() || isDatehep2() || isDateopv1()){
+            
+        }
+
+    }
+
+    private boolean isDateopv1() {
+        if (!mdateopv1.equals(dateopv1.getText().toString())){
+
+            mDatabase.child("firstName").setValue(dateopv1.getText().toString());
+
+            mdateopv1 = dateopv1.getText().toString();
+            return true;
+        }
+        else {
+            return  false;
+        }
+    }
+
+    private boolean isDatehep2() {
+        if (!firstName.equals(datehep2.getText().toString())){
+
+            mDatabase.child("datehep2").setValue(datehep2.getText().toString());
+
+            firstName = datehep2.getText().toString();
+            return true;
+        }
+        else {
+            return  false;
+        }
+    }
+
+    private boolean isDatehib1() {
+        if (!firstName.equals(datehib1.getText().toString())){
+
+            mDatabase.child("datehib1").setValue(datehib1.getText().toString());
+
+            firstName = datehib1.getText().toString();
+            return true;
+        }
+        else {
+            return  false;
+        }
+    }
+
+    private boolean isDatedtwp() {
+        if (!firstName.equals(datedtwp.getText().toString())){
+
+            mDatabase.child("datedtwp").setValue(datedtwp.getText().toString());
+
+            firstName = datedtwp.getText().toString();
+            return true;
+        }
+        else {
+            return  false;
+        }
+    }
+
+    private boolean isDateopv0() {
+        if (!firstName.equals(dateopv0.getText().toString())){
+
+            mDatabase.child("dateopv0").setValue(dateopv0.getText().toString());
+
+            firstName = dateopv0.getText().toString();
+            return true;
+        }
+        else {
+            return  false;
+        }
+    }
+
+    private boolean isDatehep1() {
+        if (!firstName.equals(datehep1.getText().toString())){
+
+            mDatabase.child("datehep1").setValue(datehep1.getText().toString());
+
+            firstName = datehep1.getText().toString();
+            return true;
+        }
+        else {
+            return  false;
+        }
+    }
+
+    private boolean isDatebcg() {
+        if (!firstName.equals(datebcg.getText().toString())){
+
+            mDatabase.child("datebcg").setValue(datebcg.getText().toString());
+
+            firstName = datebcg.getText().toString();
+            return true;
+        }
+        else {
+            return  false;
+        }
     }
 }
