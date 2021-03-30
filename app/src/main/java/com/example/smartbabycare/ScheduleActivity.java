@@ -328,11 +328,11 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private boolean isDatehep2() {
-        if (!firstName.equals(datehep2.getText().toString())){
+        if (!mdatehep2.equals(datehep2.getText().toString())){
 
             mDatabase.child("datehep2").setValue(datehep2.getText().toString());
 
-            firstName = datehep2.getText().toString();
+            mdatehep2 = datehep2.getText().toString();
             return true;
         }
         else {
@@ -341,11 +341,11 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private boolean isDatehib1() {
-        if (!firstName.equals(datehib1.getText().toString())){
+        if (!mdatehib1.equals(datehib1.getText().toString())){
 
             mDatabase.child("datehib1").setValue(datehib1.getText().toString());
 
-            firstName = datehib1.getText().toString();
+            mdatehib1 = datehib1.getText().toString();
             return true;
         }
         else {
@@ -354,11 +354,11 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private boolean isDatedtwp() {
-        if (!firstName.equals(datedtwp.getText().toString())){
+        if (!mdatedtwp.equals(datedtwp.getText().toString())){
 
             mDatabase.child("datedtwp").setValue(datedtwp.getText().toString());
 
-            firstName = datedtwp.getText().toString();
+            mdatedtwp = datedtwp.getText().toString();
             return true;
         }
         else {
@@ -367,11 +367,11 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private boolean isDateopv0() {
-        if (!firstName.equals(dateopv0.getText().toString())){
+        if (!mDateopv0.equals(dateopv0.getText().toString())){
 
             mDatabase.child("dateopv0").setValue(dateopv0.getText().toString());
 
-            firstName = dateopv0.getText().toString();
+            mDateopv0 = dateopv0.getText().toString();
             return true;
         }
         else {
@@ -380,11 +380,11 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private boolean isDatehep1() {
-        if (!firstName.equals(datehep1.getText().toString())){
+        if (!mDatehep1.equals(datehep1.getText().toString())){
 
             mDatabase.child("datehep1").setValue(datehep1.getText().toString());
 
-            firstName = datehep1.getText().toString();
+            mDatehep1 = datehep1.getText().toString();
             return true;
         }
         else {
@@ -393,11 +393,11 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private boolean isDatebcg() {
-        if (!firstName.equals(datebcg.getText().toString())){
+        if (!mDatebcg.equals(datebcg.getText().toString())){
 
             mDatabase.child("datebcg").setValue(datebcg.getText().toString());
 
-            firstName = datebcg.getText().toString();
+            mDatebcg = datebcg.getText().toString();
             return true;
         }
         else {
