@@ -21,6 +21,8 @@ import android.widget.Toast;
 import android.widget.DatePicker;
 import android.app.DatePickerDialog;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +30,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,6 +48,10 @@ public class ScheduleActivity extends AppCompatActivity {
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     String userid=user.getUid();
     private DatabaseReference mDatabase;
+
+    //Cloud Messaging
+    DatabaseReference rootDatabase;
+    String token;
 
     final Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog datePickerDialog;
@@ -213,6 +222,24 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
 
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(ScheduleActivity.this, "Get Instance Failed", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        token = task.getResult().getToken();
+                        FirebaseMessaging.getInstance().subscribeToTopic("All");
+                        rootDatabase.child("token").setValue(token);
+
+                        Toast.makeText(ScheduleActivity.this, token, Toast.LENGTH_LONG).show();
+
+                    }
+                });
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  phoneNo = sharedPreferences.getString("phone", null) ;
