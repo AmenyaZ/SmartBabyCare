@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.Random;
 
 public class MessagingService extends FirebaseMessagingService {
-    private static final String TAG = "MmustMessagingService";
+    private static final String TAG = "MessagingService";
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
