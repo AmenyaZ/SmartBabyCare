@@ -49,9 +49,7 @@ public class ScheduleActivity extends AppCompatActivity {
     String userid=user.getUid();
     private DatabaseReference mDatabase;
 
-    //Cloud Messaging
-    DatabaseReference rootDatabase;
-    String token;
+
 
     final Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog datePickerDialog;
@@ -223,23 +221,7 @@ public class ScheduleActivity extends AppCompatActivity {
         });
 
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(ScheduleActivity.this, "Get Instance Failed", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
 
-                        token = task.getResult().getToken();
-                        FirebaseMessaging.getInstance().subscribeToTopic("All");
-                        rootDatabase.child("token").setValue(token);
-
-                        Toast.makeText(ScheduleActivity.this, token, Toast.LENGTH_LONG).show();
-
-                    }
-                });
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  phoneNo = sharedPreferences.getString("phone", null) ;

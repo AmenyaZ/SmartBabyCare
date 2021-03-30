@@ -17,11 +17,17 @@ import com.example.smartbabycare.ui.profile.ProfileFragment;
 import com.example.smartbabycare.ui.settings.SettingsFragment;
 import com.example.smartbabycare.ui.share.ShareFragment;
 import com.example.smartbabycare.viewModel.sharedViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +53,11 @@ public class SmartBaby extends AppCompatActivity  {
     NavigationView navigationView;
     private ActionBarDrawerToggle drawerToggle;
 
+    //Cloud Messaging
+    public static final String NOTIFICATION = "PushNotification";
+    DatabaseReference rootDatabase;
+    String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +74,24 @@ public class SmartBaby extends AppCompatActivity  {
 
     //    NavigationView navigationView = findViewById(R.id.nav_view);
 
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(SmartBaby.this, "Get Instance Failed", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        token = task.getResult().getToken();
+                        FirebaseMessaging.getInstance().subscribeToTopic("All");
+                        rootDatabase.child("token").setValue(token);
+
+                        Toast.makeText(SmartBaby.this, token, Toast.LENGTH_LONG).show();
+
+                    }
+                });
 
         navigationView = findViewById(R.id.nav_view);
         setupDrawerContent(navigationView);
