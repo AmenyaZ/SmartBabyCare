@@ -1,18 +1,25 @@
 package com.example.smartbabycare;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.DatePicker;
+import android.app.DatePickerDialog;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,15 +29,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class ScheduleActivity extends AppCompatActivity {
     private CheckBox bcg,hep1, opv0, dtwp, hib1,hep2,opv1;
     private EditText datebcg, datehep1,dateopv0,datedtwp,datehib1,datehep2,dateopv1;
-    private Button save;
+    private Button btnsave;
     TextView date_given2, date_given3;
+    private int mYear, mMonth, mDay;
 
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     String userid=user.getUid();
     private DatabaseReference mDatabase;
+
+    final Calendar myCalendar = Calendar.getInstance();
+    DatePickerDialog datePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,16 +71,148 @@ public class ScheduleActivity extends AppCompatActivity {
         hib1 = (CheckBox) findViewById(R.id.hib1);
         hep2 = (CheckBox) findViewById(R.id.hep2);
         opv1 = (CheckBox) findViewById(R.id.opv1);
-        save = (Button) findViewById(R.id.save);
+        btnsave = findViewById(R.id.btnsave);
 
 
-       /* val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("Preferences", 0)
-        val phoneNo : String? = sharedPreferences.getString("phone", null)
-        reference = Firebase.database.getReference("ChildRecords").child(phoneNo!!)  */
 
-        /*SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("phone", phoneNo);*/
+
+
+        datebcg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        datebcg.setText(day+"/"+month+"/"+year);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+
+            }
+        });
+        datehep1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        datehep1.setText(day+"/"+month+"/"+year);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+
+            }
+        });
+        dateopv0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        dateopv0.setText(day+"/"+month+"/"+year);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+
+            }
+
+
+        });
+        datedtwp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        datedtwp.setText(day+"/"+month+"/"+year);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+
+            }
+        });
+        datehib1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        datehib1.setText(day+"/"+month+"/"+year);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+
+            }
+        });
+        datehep2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        datehep2.setText(day+"/"+month+"/"+year);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+
+            }
+        });
+        dateopv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        dateopv1.setText(day+"/"+month+"/"+year);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+
+            }
+        });
+
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  phoneNo = sharedPreferences.getString("phone", null) ;
@@ -74,38 +221,45 @@ public class ScheduleActivity extends AppCompatActivity {
         //String mKey = mDatabase.push().getKey();
         mDatabase = FirebaseDatabase.getInstance().getReference("Dates");
 
+
         getChildsDate();
 
-        save.setOnClickListener(new View.OnClickListener() {
+
+        btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                StringBuffer OUTPUT = new StringBuffer();
-                OUTPUT.append("BCG :")
-                        .append(bcg.isChecked());
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleActivity.this, R.style.Theme_SmartBabyCare);
+                View view1 = LayoutInflater.from(ScheduleActivity.this).inflate(R.layout.success_dialog1, null);
+                TextView textView = view1.findViewById(R.id.tvSuccess);
+                ImageView imageButton = view1.findViewById(R.id.ivSuccessCheck);
+                textView.setText("Vaccine Successfully Scheduled!!!");
+                Button button = view1.findViewById(R.id.buttonSave);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(getApplicationContext(), SmartBaby.class));
+                        finish();
+                    }
+                });
 
-                OUTPUT.append("\nHEP_B1 :")
-                        .append(hep1.isChecked());
 
-                OUTPUT.append("\nOPV_0 :")
-                        .append(opv0.isChecked());
+                imageButton.setImageResource(R.drawable.ic_baseline_check_circle_24);
 
-                OUTPUT.append("\nDTWP_1 :")
-                        .append(dtwp.isChecked());
-
-                OUTPUT.append("\nHIB_1 :")
-                        .append(hib1.isChecked());
-
-                OUTPUT.append("\nHEP_B2 :")
-                        .append(hep2.isChecked());
-
-                OUTPUT.append("\nOPV_1 :")
-                        .append(opv1.isChecked());
-
-                Toast.makeText(ScheduleActivity.this, OUTPUT.toString(), Toast.LENGTH_LONG).show();
-                }
+                builder.setView(view1);
+                builder.show();
+            }
         });
+
     }
- String mDobs,ScheduleDate;
+
+    /*private void updateLabel() {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        datebcg.setText(sdf.format(myCalendar.getTime()));
+    }*/
+
+    String mDobs,ScheduleDate;
     private void getChildsDate() {
 
         mDatabase.orderByChild("DateOfBirth1").equalTo(mDobs).addListenerForSingleValueEvent(new ValueEventListener() {
