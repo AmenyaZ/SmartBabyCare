@@ -1,5 +1,6 @@
 package com.example.smartbabycare.addingChild
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -23,6 +24,8 @@ class AddingChildFragment : Fragment() {
     private lateinit var instance : Calendar
     private lateinit var childModel: sharedViewModel
     private lateinit var reference: DatabaseReference
+    val myCalendar = Calendar.getInstance()
+    var datePickerDialog: DatePickerDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -36,6 +39,7 @@ class AddingChildFragment : Fragment() {
 
 
 
+
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("Preferences", 0)
         val phoneNo : String? = sharedPreferences.getString("phone", null)
         reference = Firebase.database.getReference("ChildRecords").child(phoneNo!!)
@@ -44,6 +48,14 @@ class AddingChildFragment : Fragment() {
             val dob : String = addingChildBinding.etDOB.text.toString().trim()
             val  gender: String = addingChildBinding.etGender.text.toString().trim()
             val pob : String = addingChildBinding.etPOB.text.toString().trim()
+
+          /*  addingChildBinding.etDOB.setOnClickListener(View.OnClickListener {
+                val year: Int = myCalendar.get(Calendar.YEAR)
+                val month: Int = myCalendar.get(Calendar.MONTH)
+                val day: Int = myCalendar.get(Calendar.DAY_OF_MONTH)
+                datePickerDialog = DatePickerDialog(, { datePicker, i, i1, i2 -> datebcg.setText("$day/$month/$year") }, year, month, day)
+                datePickerDialog.show()
+            })*/
 
             if(name.trim().isEmpty()){
                 addingChildBinding.etName.error = "Name is Required"

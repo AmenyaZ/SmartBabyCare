@@ -237,6 +237,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        saveChildsVaccinationDatesChanges();
                         startActivity(new Intent(getApplicationContext(), SmartBaby.class));
                         finish();
                     }
@@ -252,6 +253,12 @@ public class ScheduleActivity extends AppCompatActivity {
 
     }
 
+    private void saveChildsVaccinationDatesChanges() {
+
+        if ()
+
+    }
+
     /*private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -259,7 +266,7 @@ public class ScheduleActivity extends AppCompatActivity {
         datebcg.setText(sdf.format(myCalendar.getTime()));
     }*/
 
-    String mDobs,ScheduleDate;
+    String mDobs,ScheduleDate,mDatebcg,mDatehep1,mDateopv0,mdatedtwp,mdatehib1,mdatehep2,mdateopv1;
     private void getChildsDate() {
 
         mDatabase.orderByChild("DateOfBirth1").equalTo(mDobs).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -268,8 +275,33 @@ public class ScheduleActivity extends AppCompatActivity {
                 mDobs= snapshot.child("DateOfBirth1").getValue().toString();
                 ScheduleDate = snapshot.child("ScheduleDate1").getValue().toString();
 
+                //Tobe administered at birth
+                mDatebcg = snapshot.child("DateOfBirth1").getValue().toString();
+                mDatehep1 = snapshot.child("DateOfBirth1").getValue().toString();
+                mDateopv0 = snapshot.child("DateOfBirth1").getValue().toString();
+
+                //To be givien After 6 Weeks
+                mdatedtwp = snapshot.child("ScheduleDate1").getValue().toString();
+                mdatehib1 = snapshot.child("ScheduleDate1").getValue().toString();
+                mdatehep2 = snapshot.child("ScheduleDate1").getValue().toString();
+                mdateopv1 = snapshot.child("ScheduleDate1").getValue().toString();
+
+                //DefaultDate
                 date_given3.setText("The Ideal Date is :"+" "+mDobs);
                 date_given2.setText("The Ideal Date is :"+" "+ScheduleDate);
+
+                //At Bith
+                datebcg.setText(mDatebcg);
+                datehep1.setText(mDatehep1);
+                dateopv0.setText(mDateopv0);
+
+                //After 6 weeks
+                datedtwp.setText(mdatedtwp);
+                datehib1.setText(mdatehib1);
+                datehep2.setText(mdatehep2);
+                dateopv1.setText(mdateopv1);
+
+
             }
 
             @Override
