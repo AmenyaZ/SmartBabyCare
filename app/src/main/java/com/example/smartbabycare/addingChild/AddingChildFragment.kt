@@ -57,6 +57,21 @@ class AddingChildFragment : Fragment() {
                 datePickerDialog.show()
             })*/
 
+            addingChildBinding.etDOB.setOnClickListener {
+                val c = Calendar.getInstance()
+                val year = c.get(Calendar.YEAR)
+                val month = c.get(Calendar.MONTH)
+                val day = c.get(Calendar.DAY_OF_MONTH)
+                val dpd = context?.let { it1 ->
+                    DatePickerDialog(it1, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                        // Display Selected date in TextView
+                        addingChildBinding.etDOB.setText(dayOfMonth + "/" + (month+1) + "/" + year)
+                    }, year, month, day)
+                }
+                dpd?.show()
+
+            }
+
             if(name.trim().isEmpty()){
                 addingChildBinding.etName.error = "Name is Required"
            }
