@@ -49,7 +49,7 @@ public class ParentDetailsActivity extends AppCompatActivity {
         etPhone_Number = findViewById(R.id.etPhone_Number);
         etDoB = findViewById(R.id.etDoB);
         btnSubmit = findViewById(R.id.btnSubmit);
-        profile = findViewById(R.id.profile);
+        profile = findViewById(R.id.profileDp);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("registration").child(userid);
 
