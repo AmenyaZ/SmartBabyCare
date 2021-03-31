@@ -65,7 +65,7 @@ class AddingChildFragment : Fragment() {
                 val dpd = context?.let { it1 ->
                     DatePickerDialog(it1, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                         // Display Selected date in TextView
-                        addingChildBinding.etDOB.setText(dayOfMonth + "/" + (month+1) + "/" + year)
+                        addingChildBinding.etDOB.setText("" + dayOfMonth + "/" + (month+1) + "/" + year)
                     }, year, month, day)
                 }
                 dpd?.show()
