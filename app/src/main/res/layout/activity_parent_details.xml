@@ -114,7 +114,11 @@
                             android:hint="Date Of Birt"
                             android:inputType="date"
                             android:paddingStart="5dp"
-                            android:paddingLeft="5dp" />
+                            android:paddingLeft="5dp"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
