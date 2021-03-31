@@ -94,7 +94,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                        datebcg.setText(day+"/"+month+"/"+year);
+                        datebcg.setText(i2+"/"+(i1+1)+"/"+i);
 
                     }
                 },year,month,day);
@@ -113,7 +113,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                        datehep1.setText(day+"/"+month+"/"+year);
+                        //datehep1.setText(day+"/"+month+"/"+year);
+                        datehep1.setText(i2+"/"+(i1+1)+"/"+i);
 
                     }
                 },year,month,day);
@@ -132,7 +133,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                        dateopv0.setText(day+"/"+month+"/"+year);
+                        //dateopv0.setText(day+"/"+month+"/"+year);
+                        dateopv0.setText(i2+"/"+(i1+1)+"/"+i);
 
                     }
                 },year,month,day);
@@ -153,7 +155,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                        datedtwp.setText(day+"/"+month+"/"+year);
+                        //datedtwp.setText(day+"/"+month+"/"+year);
+                        datedtwp.setText(i2+"/"+(i1+1)+"/"+i);
 
                     }
                 },year,month,day);
@@ -172,7 +175,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                        datehib1.setText(day+"/"+month+"/"+year);
+                        //datehib1.setText(day+"/"+month+"/"+year);
+                        datehib1.setText(i2+"/"+(i1+1)+"/"+i);
 
                     }
                 },year,month,day);
@@ -191,7 +195,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                        datehep2.setText(day+"/"+month+"/"+year);
+                       // datehep2.setText(day+"/"+month+"/"+year);
+                        datehep2.setText(i2+"/"+(i1+1)+"/"+i);
 
                     }
                 },year,month,day);
@@ -210,7 +215,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                        dateopv1.setText(day+"/"+month+"/"+year);
+                      //  dateopv1.setText(day+"/"+month+"/"+year);
+                        dateopv1.setText(i2+"/"+(i1+1)+"/"+i);
 
                     }
                 },year,month,day);
