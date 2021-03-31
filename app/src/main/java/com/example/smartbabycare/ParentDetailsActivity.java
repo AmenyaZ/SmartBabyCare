@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -21,6 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
 
 public class ParentDetailsActivity extends AppCompatActivity {
     EditText et_Name,et_email,etPhone_Number,etDoB;
@@ -40,6 +44,9 @@ public class ParentDetailsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public String mName, mEmail, lastName, mPhonenumber, mDoB;
 
+    final Calendar myCalendar = Calendar.getInstance();
+    DatePickerDialog datePickerDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +56,25 @@ public class ParentDetailsActivity extends AppCompatActivity {
         etPhone_Number = findViewById(R.id.etPhone_Number);
         etDoB = findViewById(R.id.etDoB);
         btnSubmit = findViewById(R.id.btnSubmit);
-        profile = findViewById(R.id.profile);
+        profile = findViewById(R.id.profileDp);
+
+        etDoB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int year = myCalendar.get(Calendar.YEAR);
+                final int month =myCalendar.get(Calendar.MONTH);
+                final int day =myCalendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog= new DatePickerDialog(ParentDetailsActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        etDoB.setText(i2+"/"+(i1+1)+"/"+i);
+
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("registration").child(userid);
 
