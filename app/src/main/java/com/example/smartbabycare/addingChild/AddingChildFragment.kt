@@ -57,7 +57,7 @@ class AddingChildFragment : Fragment() {
                 datePickerDialog.show()
             })*/
 
-            addingChildBinding.etDOB.setOnClickListener {
+            /*addingChildBinding.etDOB.setOnClickListener {
                 val c = Calendar.getInstance()
                 val year = c.get(Calendar.YEAR)
                 val month = c.get(Calendar.MONTH)
@@ -70,7 +70,7 @@ class AddingChildFragment : Fragment() {
                 }
                 dpd?.show()
 
-            }
+            }*/
 
             if(name.trim().isEmpty()){
                 addingChildBinding.etName.error = "Name is Required"
