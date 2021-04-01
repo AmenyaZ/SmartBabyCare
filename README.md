@@ -5,7 +5,7 @@ To Solve :
 with all countries aiming to reduce neonatal mortality to at least as low as 12 per 1,000 live births and under-5 mortality to at least as low as 25 per 1,000 live births
 - By 2030, reduce the global maternal mortality ratio to less than 70 per 100,000 live births
 
-## Developed Using The Following Technologies
+## Developed Using The Following Technologies and Tools
 - :heavy_check_mark: Android Studio
 - :heavy_check_mark: Firebase Phone Authentication
 - :heavy_check_mark: Firebase Realtime Database
